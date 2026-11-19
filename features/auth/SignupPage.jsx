@@ -10,10 +10,10 @@ export default function SignUpPage() {
             {/* Leftight Side */}
             <div className="flex-1 min-h-[calc(100vh-16px)] w-full bg-white rounded-2xl flex flex-col items-center justify-center p-6 sm:p-12 lg:p-16 relative">
                 <div className="absolute top-10 left-0 w-full flex justify-center items-center">
-                    <Link href="/" className="flex items-center gap-3 group" aria-label="Desento">
-                        <img src="/icon.svg" alt="Desento Logo" className="w-8 h-8" />
+                    <Link href="/" className="flex items-center gap-3 group" aria-label="Autojobmailer">
+                        <img src="/icon.svg" alt="Autojobmailer Logo" className="w-8 h-8" />
                         <h1 className="text-2xl font-black tracking-tighter text-text-dark transition-colors">
-                            Desento<span className="text-secondary">.</span>
+                            Autojobmailer<span className="text-secondary">.</span>
                         </h1>
                     </Link>
                 </div>
@@ -33,7 +33,7 @@ export default function SignUpPage() {
                         className="w-full flex items-center justify-center gap-3 px-6 py-3 bg-white border border-gray-200 rounded-xl text-sm font-medium text-black hover:bg-black hover:text-white transition-colors ease-linear cursor-pointer"
                     >
                         <FcGoogle className="w-5 h-5 shrink-0" />
-                        <span>Sign In with Google</span>
+                        <span>Sign up with Google</span>
                     </button>
                 </div>
 

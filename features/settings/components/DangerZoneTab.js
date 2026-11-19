@@ -67,7 +67,7 @@ const DangerZoneTab = () => {
                             {!showConfirm ? (
                                 <button
                                     onClick={() => setShowConfirm(true)}
-                                    className="px-5 py-2.5 bg-background border border-red-200 rounded-xl text-[14px] font-bold text-red-600 hover:bg-red-600 hover:text-white hover:border-red-600 hover:shadow-[0_4px_14px_0_rgba(220,38,38,0.39)] transition-all duration-300 active:scale-95 flex items-center gap-2 cursor-pointer"
+                                    className="px-5 py-2.5 bg-background border border-red-200 rounded-xl text-[14px] font-bold text-red-600 hover:bg-red-600 hover:text-white hover:border-red-600 hover:shadow-[0_4px_14px_0_rgba(220,38,38,0.39)] transition duration-300 active:scale-95 flex items-center gap-2 cursor-pointer"
                                 >
                                     <FiAlertTriangle size={14} /> Delete All Data
                                 </button>
@@ -84,12 +84,12 @@ const DangerZoneTab = () => {
                                         value={confirmText}
                                         onChange={e => setConfirmText(e.target.value)}
                                         placeholder={CONFIRM_PHRASE}
-                                        className="w-full px-3.5 py-2.5 bg-white border border-red-200 rounded-lg text-[14px] text-text-dark outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all"
+                                        className="w-full px-3.5 py-2.5 bg-white border border-red-200 rounded-lg text-[14px] text-text-dark outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition"
                                     />
                                     <button
                                         onClick={handleDelete}
                                         disabled={confirmText.toLowerCase() !== CONFIRM_PHRASE || deleting}
-                                        className="px-5 py-2.5 bg-red-600 text-white rounded-xl text-[14px] font-bold disabled:opacity-50 hover:bg-red-700 transition-all flex items-center gap-2 cursor-pointer"
+                                        className="px-5 py-2.5 bg-red-600 text-white rounded-xl text-[14px] font-bold disabled:opacity-50 hover:bg-red-700 transition flex items-center gap-2 cursor-pointer"
                                     >
                                         {deleting ? <FiLoader className="animate-spin" size={14} /> : <FiAlertTriangle size={14} />}
                                         {deleting ? 'Deleting...' : 'Confirm Delete'}

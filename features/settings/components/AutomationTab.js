@@ -81,7 +81,7 @@ const AutomationTab = () => {
                             <select
                                 value={tone}
                                 onChange={e => setTone(e.target.value)}
-                                className="w-full px-3.5 py-2.5 bg-background border border-border rounded-lg text-[14px] text-text-dark outline-none appearance-none focus:border-primary focus:ring-1 focus:ring-primary transition-all cursor-pointer"
+                                className="w-full px-3.5 py-2.5 bg-background border border-border rounded-lg text-[14px] text-text-dark outline-none appearance-none focus:border-primary focus:ring-1 focus:ring-primary transition cursor-pointer"
                             >
                                 <option>Formal & Professional</option>
                                 <option>Confident & Direct</option>
@@ -96,7 +96,7 @@ const AutomationTab = () => {
                             <select
                                 value={length}
                                 onChange={e => setLength(e.target.value)}
-                                className="w-full px-3.5 py-2.5 bg-background border border-border rounded-lg text-[14px] text-text-dark outline-none appearance-none focus:border-primary focus:ring-1 focus:ring-primary transition-all cursor-pointer"
+                                className="w-full px-3.5 py-2.5 bg-background border border-border rounded-lg text-[14px] text-text-dark outline-none appearance-none focus:border-primary focus:ring-1 focus:ring-primary transition cursor-pointer"
                             >
                                 <option>Short (Action-oriented)</option>
                                 <option>Concise Length</option>
@@ -160,7 +160,7 @@ const AutomationTab = () => {
                 <button
                     onClick={handleSave}
                     disabled={saving}
-                    className="flex items-center gap-2 px-6 py-2.5 bg-primary text-white rounded-xl text-[13px] font-bold shadow-sm hover:opacity-90 disabled:opacity-60 transition-all cursor-pointer"
+                    className="flex items-center gap-2 px-6 py-2.5 bg-primary text-white rounded-xl text-[13px] font-bold shadow-sm hover:opacity-90 disabled:opacity-60 transition cursor-pointer"
                 >
                     {saving ? <FiLoader className="animate-spin" size={14} /> : <FiSave size={14} />}
                     {saving ? 'Saving...' : 'Save Preferences'}

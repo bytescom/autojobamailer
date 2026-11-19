@@ -323,7 +323,7 @@ const CampaignBuilder = ({ onClose, initialData }) => {
                                     value={campaignName}
                                     onChange={(e) => setCampaignName(e.target.value)}
                                     placeholder="e.g. Q3 SWE Outreach"
-                                    className="w-full px-4 py-3 bg-[#f9f9f9] border border-border/60 rounded-xl text-[14px] font-bold text-text-dark outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
+                                    className="w-full px-4 py-3 bg-[#f9f9f9] border border-border/60 rounded-xl text-[14px] font-bold text-text-dark outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition"
                                 />
                             </div>
                             <div>
@@ -333,7 +333,7 @@ const CampaignBuilder = ({ onClose, initialData }) => {
                                     value={senderEmail}
                                     onChange={(e) => setSenderEmail(e.target.value)}
                                     placeholder="your@gmail.com"
-                                    className="w-full px-4 py-3 bg-[#f9f9f9] border border-border/60 rounded-xl text-[14px] font-bold text-text-dark outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
+                                    className="w-full px-4 py-3 bg-[#f9f9f9] border border-border/60 rounded-xl text-[14px] font-bold text-text-dark outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition"
                                 />
                             </div>
                         </div>
@@ -459,7 +459,7 @@ const CampaignBuilder = ({ onClose, initialData }) => {
                                     key={tab.id}
                                     type="button"
                                     onClick={() => setAudienceTab(tab.id)}
-                                    className={`flex-1 py-2 text-[12px] rounded-lg transition-all cursor-pointer text-center ${
+                                    className={`flex-1 py-2 text-[12px] rounded-lg transition cursor-pointer text-center ${
                                         audienceTab === tab.id
                                             ? 'bg-white shadow text-[#1f9160] font-bold'
                                             : 'text-muted hover:text-text-dark font-semibold'
@@ -479,7 +479,7 @@ const CampaignBuilder = ({ onClose, initialData }) => {
                                     placeholder="Search contacts..."
                                     value={audienceSearch}
                                     onChange={(e) => setAudienceSearch(e.target.value)}
-                                    className="w-full pl-9 pr-4 py-2 bg-[#f9f9f9] border border-border/60 rounded-lg text-[13px] font-medium placeholder:text-muted outline-none focus:border-[#1f9160] focus:ring-2 focus:ring-[#1f9160]/10 transition-all"
+                                    className="w-full pl-9 pr-4 py-2 bg-[#f9f9f9] border border-border/60 rounded-lg text-[13px] font-medium placeholder:text-muted outline-none focus:border-[#1f9160] focus:ring-2 focus:ring-[#1f9160]/10 transition"
                                 />
                             </div>
                             
@@ -488,7 +488,7 @@ const CampaignBuilder = ({ onClose, initialData }) => {
                                 <select
                                     value={selectedRoleFilter}
                                     onChange={(e) => setSelectedRoleFilter(e.target.value)}
-                                    className="pl-3 pr-8 py-2 bg-[#f9f9f9] border border-border/60 rounded-lg text-[13px] font-bold text-text-dark outline-none focus:border-[#1f9160] transition-all appearance-none cursor-pointer"
+                                    className="pl-3 pr-8 py-2 bg-[#f9f9f9] border border-border/60 rounded-lg text-[13px] font-bold text-text-dark outline-none focus:border-[#1f9160] transition appearance-none cursor-pointer"
                                 >
                                     <option value="All Roles">All Roles</option>
                                     {uniqueRoles.map(role => (
@@ -503,7 +503,7 @@ const CampaignBuilder = ({ onClose, initialData }) => {
                                 <select
                                     value={selectedTagFilter}
                                     onChange={(e) => setSelectedTagFilter(e.target.value)}
-                                    className="pl-3 pr-8 py-2 bg-[#f9f9f9] border border-border/60 rounded-lg text-[13px] font-bold text-text-dark outline-none focus:border-[#1f9160] transition-all appearance-none cursor-pointer"
+                                    className="pl-3 pr-8 py-2 bg-[#f9f9f9] border border-border/60 rounded-lg text-[13px] font-bold text-text-dark outline-none focus:border-[#1f9160] transition appearance-none cursor-pointer"
                                 >
                                     <option value="All Tags">All Tags</option>
                                     {uniqueTags.map(tag => (
@@ -533,14 +533,14 @@ const CampaignBuilder = ({ onClose, initialData }) => {
                                         <div
                                             key={lead._id}
                                             onClick={() => toggleLead(lead._id)}
-                                            className={`border rounded-xl p-4 flex items-center gap-4 cursor-pointer transition-all ${
+                                            className={`border rounded-xl p-4 flex items-center gap-4 cursor-pointer transition ${
                                                 checked
                                                     ? 'border-[#1f9160] bg-[#1f9160]/5 shadow-sm'
                                                     : 'border-border/60 bg-white hover:border-[#1f9160]/50'
                                             }`}
                                         >
                                             {/* Checkbox indicator */}
-                                            <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 transition-all ${
+                                            <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 transition ${
                                                 checked
                                                     ? 'border-[#1f9160] bg-[#1f9160] text-white'
                                                     : 'border-border/80 bg-white'
@@ -708,7 +708,7 @@ const CampaignBuilder = ({ onClose, initialData }) => {
                                     value={quickName}
                                     onChange={(e) => setQuickName(e.target.value)}
                                     placeholder="e.g. Saloni"
-                                    className="w-full px-3 py-2 bg-[#f9f9f9] border border-border/60 rounded-lg text-[13px] outline-none focus:border-[#1f9160] transition-all"
+                                    className="w-full px-3 py-2 bg-[#f9f9f9] border border-border/60 rounded-lg text-[13px] outline-none focus:border-[#1f9160] transition"
                                 />
                             </div>
                             <div>
@@ -719,7 +719,7 @@ const CampaignBuilder = ({ onClose, initialData }) => {
                                     onChange={(e) => setQuickEmail(e.target.value)}
                                     placeholder="saloni@cloudeagle.ai"
                                     required
-                                    className="w-full px-3 py-2 bg-[#f9f9f9] border border-border/60 rounded-lg text-[13px] outline-none focus:border-[#1f9160] transition-all"
+                                    className="w-full px-3 py-2 bg-[#f9f9f9] border border-border/60 rounded-lg text-[13px] outline-none focus:border-[#1f9160] transition"
                                 />
                             </div>
                             <div>
@@ -730,7 +730,7 @@ const CampaignBuilder = ({ onClose, initialData }) => {
                                     onChange={(e) => setQuickCompany(e.target.value)}
                                     placeholder="CloudEagle.ai"
                                     required
-                                    className="w-full px-3 py-2 bg-[#f9f9f9] border border-border/60 rounded-lg text-[13px] outline-none focus:border-[#1f9160] transition-all"
+                                    className="w-full px-3 py-2 bg-[#f9f9f9] border border-border/60 rounded-lg text-[13px] outline-none focus:border-[#1f9160] transition"
                                 />
                             </div>
                             <div>
@@ -741,7 +741,7 @@ const CampaignBuilder = ({ onClose, initialData }) => {
                                     onChange={(e) => setQuickRole(e.target.value)}
                                     placeholder="Associate Product Manager"
                                     required
-                                    className="w-full px-3 py-2 bg-[#f9f9f9] border border-border/60 rounded-lg text-[13px] outline-none focus:border-[#1f9160] transition-all"
+                                    className="w-full px-3 py-2 bg-[#f9f9f9] border border-border/60 rounded-lg text-[13px] outline-none focus:border-[#1f9160] transition"
                                 />
                             </div>
                             <div className="flex gap-2 justify-end mt-4">

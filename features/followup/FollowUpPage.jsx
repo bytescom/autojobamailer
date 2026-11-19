@@ -138,21 +138,21 @@ const FollowUp = () => {
                                 placeholder="Company *"
                                 value={form.company}
                                 onChange={e => setForm(p => ({ ...p, company: e.target.value }))}
-                                className="px-4 py-3 bg-background border border-border rounded-lg text-[14px] font-medium placeholder:text-muted outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
+                                className="px-4 py-3 bg-background border border-border rounded-lg text-[14px] font-medium placeholder:text-muted outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition"
                             />
                             <input
                                 type="text"
                                 placeholder="Role"
                                 value={form.role}
                                 onChange={e => setForm(p => ({ ...p, role: e.target.value }))}
-                                className="px-4 py-3 bg-background border border-border rounded-lg text-[14px] font-medium placeholder:text-muted outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
+                                className="px-4 py-3 bg-background border border-border rounded-lg text-[14px] font-medium placeholder:text-muted outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition"
                             />
                             <input
                                 type="email"
                                 placeholder="HR Email *"
                                 value={form.email}
                                 onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
-                                className="px-4 py-3 bg-background border border-border rounded-lg text-[14px] font-medium placeholder:text-muted outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
+                                className="px-4 py-3 bg-background border border-border rounded-lg text-[14px] font-medium placeholder:text-muted outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition"
                             />
                             <div className="relative sm:col-span-2 xl:col-span-1">
                                 <FiCalendar className="absolute left-4 top-1/2 -translate-y-1/2 text-muted" size={15} />
@@ -160,7 +160,7 @@ const FollowUp = () => {
                                     type="date"
                                     value={form.dueDate}
                                     onChange={e => setForm(p => ({ ...p, dueDate: e.target.value }))}
-                                    className="w-full pl-10 pr-4 py-3 bg-background border border-border rounded-lg text-[14px] font-medium text-text outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
+                                    className="w-full pl-10 pr-4 py-3 bg-background border border-border rounded-lg text-[14px] font-medium text-text outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition"
                                 />
                             </div>
                             <button
@@ -180,7 +180,7 @@ const FollowUp = () => {
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
-                                className={`px-6 py-2 text-[13px] font-medium transition-all whitespace-nowrap sm:flex-1 text-center cursor-pointer ${activeTab === tab
+                                className={`px-6 py-2 text-[13px] font-medium transition whitespace-nowrap sm:flex-1 text-center cursor-pointer ${activeTab === tab
                                     ? 'bg-background text-text-dark border-t-[3px] border-t-primary shadow-[0_-1px_0_0_theme(colors.gray.100)]'
                                     : 'text-muted hover:text-primary hover:bg-surface border-t-[3px] border-t-transparent'
                                     }`}

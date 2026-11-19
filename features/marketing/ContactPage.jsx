@@ -35,10 +35,10 @@ export default function ContactPage() {
 
             <header className="relative z-10 border-b border-border/60 bg-white/75 backdrop-blur-md">
                 <nav className="mx-auto flex h-17.5 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8" aria-label="Contact navigation">
-                    <Link href="/" className="flex items-center gap-2" aria-label="Desento home">
-                        <img src="/icon.svg" alt="Desento Logo" className="w-6 h-6" />
+                    <Link href="/" className="flex items-center gap-2" aria-label="Autojobmailer home">
+                        <img src="/icon.svg" alt="Autojobmailer Logo" className="w-6 h-6" />
                         <span className="text-xl font-black tracking-tight text-text-dark hover:text-primary">
-                            Desento<span className="text-secondary">.</span>
+                            Autojobmailer<span className="text-secondary">.</span>
                         </span>
                     </Link>
                     <Link href="/" className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-text/60 transition-colors hover:text-primary">
@@ -75,7 +75,7 @@ export default function ContactPage() {
                             <div className="mt-6 space-y-4">
                                 <a
                                     href="mailto:hello@pankajk.site"
-                                    className="flex items-center gap-4 rounded-lg border border-border bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5"
+                                    className="flex items-center gap-4 rounded-lg border border-border bg-surface p-5 transition hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5"
                                 >
                                     <div className="rounded-lg border border-primary/10 bg-white p-3 shadow-sm">
                                         <MdMail className="w-5 h-5 text-primary" />
@@ -89,7 +89,7 @@ export default function ContactPage() {
                                     href="https://x.com/justpankajk"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-4 rounded-lg border border-border bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5"
+                                    className="flex items-center gap-4 rounded-lg border border-border bg-surface p-5 transition hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5"
                                 >
                                     <div className="rounded-lg border border-primary/10 bg-white p-3 shadow-sm">
                                         <FiTwitter className="w-5 h-5 text-primary" />
@@ -131,7 +131,7 @@ export default function ContactPage() {
                                             type="email"
                                             required
                                             placeholder="your@email.com"
-                                            className="w-full rounded-lg border border-border bg-surface px-4 py-3 text-sm font-medium text-text-dark outline-none transition-all placeholder:text-text/35 focus:border-primary/30 focus:bg-white"
+                                            className="w-full rounded-lg border border-border bg-surface px-4 py-3 text-sm font-medium text-text-dark outline-none transition placeholder:text-text/35 focus:border-primary/30 focus:bg-white"
                                         />
                                     </label>
 
@@ -141,7 +141,7 @@ export default function ContactPage() {
                                             name="subject"
                                             type="text"
                                             placeholder="Subject (optional)"
-                                            className="w-full rounded-lg border border-border bg-surface px-4 py-3 text-sm font-medium text-text-dark outline-none transition-all placeholder:text-text/35 focus:border-primary/30 focus:bg-white"
+                                            className="w-full rounded-lg border border-border bg-surface px-4 py-3 text-sm font-medium text-text-dark outline-none transition placeholder:text-text/35 focus:border-primary/30 focus:bg-white"
                                         />
                                     </label>
 
@@ -152,13 +152,13 @@ export default function ContactPage() {
                                             required
                                             rows={5}
                                             placeholder="How can we help you?"
-                                            className="w-full resize-none rounded-lg border border-border bg-surface px-4 py-3 text-sm font-medium text-text-dark outline-none transition-all placeholder:text-text/35 focus:border-primary/30 focus:bg-white"
+                                            className="w-full resize-none rounded-lg border border-border bg-surface px-4 py-3 text-sm font-medium text-text-dark outline-none transition placeholder:text-text/35 focus:border-primary/30 focus:bg-white"
                                         />
                                     </label>
 
                                     <button
                                         type="submit"
-                                        className="mt-2 inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-bold text-white shadow-[0_14px_30px_-14px_rgba(79,70,229,0.4)] transition-all duration-200 hover:opacity-95 active:scale-[0.98] cursor-pointer"
+                                        className="mt-2 inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-bold text-white shadow-[0_14px_30px_-14px_rgba(79,70,229,0.4)] transition duration-200 hover:opacity-95 active:scale-[0.98] cursor-pointer"
                                     >
                                         Send Message
                                     </button>
@@ -178,7 +178,7 @@ export default function ContactPage() {
             <footer className="w-full bg-surface text-text-dark relative overflow-hidden px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm border-t border-border py-10">
                     <p className="text-text/70 font-medium">
-                        &copy; {currentYear} Desento by{" "}
+                        &copy; {currentYear} Autojobmailer by{" "}
                         <Link
                             href="https://x.com/justpankajk"
                             target="_blank"
@@ -195,7 +195,7 @@ export default function ContactPage() {
                                 key={social.name}
                                 href={social.href}
                                 target="_blank"
-                                className="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 hover:bg-primary hover:text-white text-text-dark transition-all duration-300 hover:scale-110"
+                                className="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 hover:bg-primary hover:text-white text-text-dark transition duration-300 hover:scale-110"
                                 aria-label={social.name}
                             >
                                 <social.icon className="w-4 h-4" />

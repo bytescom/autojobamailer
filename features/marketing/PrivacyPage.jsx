@@ -34,10 +34,10 @@ export default function PrivacyPage() {
 
             <header className="relative z-10 border-b border-border/60 bg-white/75 backdrop-blur-md">
                 <nav className="mx-auto flex h-17.5 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8" aria-label="Privacy navigation">
-                    <Link href="/" className="flex items-center gap-2" aria-label="Desento home">
-                        <img src="/icon.svg" alt="Desento Logo" className="w-6 h-6" />
+                    <Link href="/" className="flex items-center gap-2" aria-label="Autojobmailer home">
+                        <img src="/icon.svg" alt="Autojobmailer Logo" className="w-6 h-6" />
                         <span className="text-xl font-black tracking-tight text-text-dark hover:text-primary">
-                            Desento<span className="text-secondary">.</span>
+                            Autojobmailer<span className="text-secondary">.</span>
                         </span>
                     </Link>
                     <Link href="/" className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-text/60 transition-colors hover:text-primary">
@@ -58,7 +58,7 @@ export default function PrivacyPage() {
                             Your data, handled with the same care as the product.
                         </h1>
                         <p className="max-w-2xl text-base leading-7 text-text/70 sm:text-lg">
-                            This page explains what we collect, why we collect it, and how we protect it when you use Desento.
+                            This page explains what we collect, why we collect it, and how we protect it when you use Autojobmailer.
                         </p>
                         <p className="text-sm font-medium text-text/55">
                             Last updated: {updatedAt}
@@ -71,7 +71,7 @@ export default function PrivacyPage() {
                                 <h2 className="text-xl font-black tracking-tight text-text-dark">What we collect</h2>
                             </div>
                             <p className="mt-4 text-sm leading-7 text-text/70">
-                                Desento only collects the information required to create applications, send messages, and keep your workflow organized.
+                                Autojobmailer only collects the information required to create applications, send messages, and keep your workflow organized.
                             </p>
                             <ul className="mt-5 space-y-3">
                                 {[
@@ -154,7 +154,7 @@ export default function PrivacyPage() {
             <footer className="w-full bg-surface text-text-dark relative overflow-hidden px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm border-t border-border py-10">
                     <p className="text-text/70 font-medium">
-                        &copy; {currentYear} Desento by{" "}
+                        &copy; {currentYear} Autojobmailer by{" "}
                         <Link
                             href="https://x.com/justpankajk"
                             target="_blank"
@@ -171,7 +171,7 @@ export default function PrivacyPage() {
                                 key={social.name}
                                 href={social.href}
                                 target="_blank"
-                                className="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 hover:bg-primary hover:text-white text-text-dark transition-all duration-300 hover:scale-110"
+                                className="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 hover:bg-primary hover:text-white text-text-dark transition duration-300 hover:scale-110"
                                 aria-label={social.name}
                             >
                                 <social.icon className="w-4 h-4" />

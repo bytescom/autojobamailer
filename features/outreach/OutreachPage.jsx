@@ -4,8 +4,8 @@ import {
     FiPlus, FiSearch, FiEdit2, FiTrash2,
     FiCopy, FiPlay, FiFilter, FiCalendar, FiEye, FiLoader
 } from 'react-icons/fi';
-import CampaignBuilder from './CampaignBuilder';
-import TemplateEditorModal from './TemplateEditorModal';
+import CampaignBuilder from './components/CampaignBuilder';
+import TemplateEditorModal from './components/TemplateEditorModal';
 
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -48,7 +48,7 @@ const EmptyState = ({ label, onAction, actionLabel }) => (
         </div>
         <p className="text-[14px] font-bold text-text-dark">{label}</p>
         {onAction && (
-            <button onClick={onAction} className="px-4 py-2 bg-primary text-white rounded-lg text-[13px] font-bold hover:bg-primary/90 transition-colors cursor-pointer">
+            <button onClick={onAction} className="px-4 py-2 bg-primary text-white rounded-lg text-[13px] font-bold hover:bg-primary/90 transition active:scale-[0.98] cursor-pointer">
                 {actionLabel}
             </button>
         )}
@@ -285,7 +285,7 @@ const Outreach = () => {
                             placeholder={activeTab === 'Campaigns' ? "Search campaigns..." : "Search templates..."}
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-9 pr-4 py-2 bg-surface/50 border border-border/60 rounded-lg text-[13px] font-medium placeholder:text-muted outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 focus:bg-background transition-all"
+                            className="w-full pl-9 pr-4 py-2 bg-surface/50 border border-border/60 rounded-lg text-[13px] font-medium placeholder:text-muted outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 focus:bg-background transition"
                         />
                     </div>
 
@@ -295,7 +295,7 @@ const Outreach = () => {
                                 <button
                                     key={option}
                                     onClick={() => setStatusFilter(option)}
-                                    className={`px-3 py-1.5 text-[12px] font-semibold rounded-md transition-all cursor-pointer whitespace-nowrap ${statusFilter === option ? 'bg-background text-text-dark shadow-sm border border-border/50' : 'text-muted hover:text-text-dark hover:bg-black/5 border border-transparent'}`}
+                                    className={`px-3 py-1.5 text-[12px] font-semibold rounded-md transition cursor-pointer whitespace-nowrap ${statusFilter === option ? 'bg-background text-text-dark shadow-sm border border-border/50' : 'text-muted hover:text-text-dark hover:bg-black/5 border border-transparent'}`}
                                 >
                                     {option}
                                 </button>
@@ -310,7 +310,7 @@ const Outreach = () => {
                                     <button
                                         key={option}
                                         onClick={() => setTemplateCategory(option)}
-                                        className={`px-3 py-1.5 text-[12px] font-semibold rounded-md transition-all cursor-pointer whitespace-nowrap ${templateCategory === option ? 'bg-background text-primary shadow-sm border border-border/50' : 'text-muted hover:text-text-dark hover:bg-black/5 border border-transparent'}`}
+                                        className={`px-3 py-1.5 text-[12px] font-semibold rounded-md transition cursor-pointer whitespace-nowrap ${templateCategory === option ? 'bg-background text-primary shadow-sm border border-border/50' : 'text-muted hover:text-text-dark hover:bg-black/5 border border-transparent'}`}
                                     >
                                         {option}
                                     </button>
@@ -364,45 +364,45 @@ const Outreach = () => {
                                                     <td className="px-4 py-3.5">
                                                         <div className="flex items-center justify-center gap-2">
                                                             <div className="w-24 h-2 bg-surface border border-border/50 rounded-full overflow-hidden">
-                                                                <div className="h-full bg-primary transition-all" style={{ width: `${progress}%` }} />
+                                                                <div className="h-full bg-primary transition" style={{ width: `${progress}%` }} />
                                                             </div>
                                                             <span className="text-[12px] font-bold text-muted w-8">{progress}%</span>
                                                         </div>
                                                     </td>
                                                     <td className="px-4 py-3.5 text-right">
-                                                        <div className="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                        <div className="flex items-center justify-end gap-1 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
                                                             {campaign.status === 'Draft' && (
                                                                 <button
                                                                     onClick={() => handleLaunchCampaign(campaign._id)}
                                                                     disabled={sendingId === campaign._id}
-                                                                    className={`p-1.5 border rounded-md transition-all cursor-pointer ${sendingId === campaign._id ? 'text-green-600 bg-green-50 border-green-200 cursor-wait' : 'text-muted hover:text-green-600 hover:bg-green-50 border-transparent hover:border-green-200'}`}
+                                                                    className={`p-2 border rounded-md transition cursor-pointer ${sendingId === campaign._id ? 'text-green-600 bg-green-50 border-green-200 cursor-wait' : 'text-muted hover:text-green-600 hover:bg-green-50 border-transparent hover:border-green-200'}`}
                                                                     title={sendingId === campaign._id ? 'Sending…' : 'Launch'}
                                                                 >
                                                                     {sendingId === campaign._id
-                                                                        ? <FiLoader size={14} className="animate-spin" />
-                                                                        : <FiPlay size={14} />}
+                                                                        ? <FiLoader size={16} className="animate-spin" />
+                                                                        : <FiPlay size={16} />}
                                                                 </button>
                                                             )}
                                                             <button
                                                                 onClick={() => { setEditingCampaign(campaign); setIsBuilding(true); }}
-                                                                className="p-1.5 text-muted hover:text-primary hover:bg-primary/5 border border-transparent hover:border-primary/20 rounded-md transition-all cursor-pointer"
+                                                                className="p-2 text-muted hover:text-primary hover:bg-primary/5 border border-transparent hover:border-primary/20 rounded-md transition cursor-pointer"
                                                                 title="Edit"
                                                             >
-                                                                <FiEdit2 size={14} />
+                                                                <FiEdit2 size={16} />
                                                             </button>
                                                             <button
                                                                 onClick={() => handleDuplicateCampaign(campaign)}
-                                                                className="p-1.5 text-muted hover:text-text-dark hover:bg-surface border border-transparent hover:border-border rounded-md transition-all cursor-pointer"
+                                                                className="p-2 text-muted hover:text-text-dark hover:bg-surface border border-transparent hover:border-border rounded-md transition cursor-pointer"
                                                                 title="Duplicate"
                                                             >
-                                                                <FiCopy size={14} />
+                                                                <FiCopy size={16} />
                                                             </button>
                                                             <button
                                                                 onClick={() => handleDeleteCampaign(campaign._id)}
-                                                                className="p-1.5 text-muted hover:text-red-600 hover:bg-red-50 border border-transparent hover:border-red-200 rounded-md transition-all cursor-pointer"
+                                                                className="p-2 text-muted hover:text-red-600 hover:bg-red-50 border border-transparent hover:border-red-200 rounded-md transition cursor-pointer"
                                                                 title="Delete"
                                                             >
-                                                                <FiTrash2 size={14} />
+                                                                <FiTrash2 size={16} />
                                                             </button>
                                                         </div>
                                                     </td>

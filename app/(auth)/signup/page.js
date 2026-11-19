@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
-const SignupPage = dynamic(() => import('@/features/auth/components/SignupPage'));
+const SignupPage = dynamic(() => import('@/features/auth/SignupPage'));
 
 export default function Page() {
     return (

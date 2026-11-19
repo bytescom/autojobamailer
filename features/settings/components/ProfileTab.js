@@ -134,7 +134,7 @@ export default function ProfileTab() {
                                 type="text"
                                 value={form.name}
                                 onChange={e => handleChange("name", e.target.value)}
-                                className="w-full px-3.5 py-2.5 bg-background border border-border rounded-lg text-[14px] text-text-dark outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                                className="w-full px-3.5 py-2.5 bg-background border border-border rounded-lg text-[14px] text-text-dark outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
                             />
                         </div>
                         <div className="flex flex-col gap-1.5 w-full">
@@ -144,7 +144,7 @@ export default function ProfileTab() {
                                 value={form.headline}
                                 onChange={e => handleChange("headline", e.target.value)}
                                 placeholder="e.g. Full Stack Developer focused on AI"
-                                className="w-full px-3.5 py-2.5 bg-background border border-border rounded-lg text-[14px] text-text-dark outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                                className="w-full px-3.5 py-2.5 bg-background border border-border rounded-lg text-[14px] text-text-dark outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
                             />
                         </div>
                     </div>
@@ -165,12 +165,12 @@ export default function ProfileTab() {
                             value={form.portfolioLink}
                             onChange={e => handleChange("portfolioLink", e.target.value)}
                             placeholder="https://"
-                            className="w-full px-3.5 py-2.5 bg-background border border-border rounded-lg text-[14px] text-text-dark outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                            className="w-full px-3.5 py-2.5 bg-background border border-border rounded-lg text-[14px] text-text-dark outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
                         />
                     </div>
                     <div className="flex flex-col gap-1.5 w-full">
                         <label className="text-[12.5px] font-medium text-text-dark">Technical Skills</label>
-                        <div className="w-full min-h-[46px] px-2.5 py-2 bg-background border border-border rounded-lg outline-none focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all flex flex-wrap gap-2 items-center">
+                        <div className="w-full min-h-[46px] px-2.5 py-2 bg-background border border-border rounded-lg outline-none focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition flex flex-wrap gap-2 items-center">
                             {skills.map(s => (
                                 <span key={s} className="flex items-center gap-1.5 px-2.5 py-1 bg-surface border border-border rounded-md text-[13px] font-medium text-text-dark">
                                     {s}
@@ -206,7 +206,7 @@ export default function ProfileTab() {
                         value={form.experienceSummary}
                         onChange={e => handleChange("experienceSummary", e.target.value)}
                         placeholder="Describe your experience tightly..."
-                        className="w-full px-3.5 py-3 bg-background border border-border rounded-lg text-[14px] text-text-dark outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none leading-relaxed"
+                        className="w-full px-3.5 py-3 bg-background border border-border rounded-lg text-[14px] text-text-dark outline-none focus:border-primary focus:ring-1 focus:ring-primary transition resize-none leading-relaxed"
                     />
                 </div>
             </div>
@@ -225,7 +225,7 @@ export default function ProfileTab() {
                             {docs.map((doc, idx) => {
                                 const cfg = DOCTYPE_LABELS[doc.docType] || DOCTYPE_LABELS.other;
                                 return (
-                                    <div key={doc.id || idx} className="flex items-center gap-3 px-4 py-3 rounded-xl border border-border bg-background hover:bg-surface transition-all">
+                                    <div key={doc.id || idx} className="flex items-center gap-3 px-4 py-3 rounded-xl border border-border bg-background hover:bg-surface transition">
                                         <div className="w-9 h-9 rounded-lg bg-surface border border-border flex items-center justify-center shrink-0">
                                             <FiFileText size={15} className="text-text" />
                                         </div>
@@ -250,7 +250,7 @@ export default function ProfileTab() {
                         <div className="flex gap-2 flex-wrap">
                             {Object.entries(DOCTYPE_LABELS).map(([val, { label }]) => (
                                 <button key={val} onClick={() => setDocType(val)}
-                                    className={`px-4 py-2 rounded-lg text-[12px] font-bold border transition-all cursor-pointer ${docType === val
+                                    className={`px-4 py-2 rounded-lg text-[12px] font-bold border transition cursor-pointer ${docType === val
                                         ? "bg-primary text-white border-primary shadow-sm"
                                         : "bg-background text-text border-border hover:border-primary hover:text-primary"}`}>
                                     {label}
@@ -261,10 +261,10 @@ export default function ProfileTab() {
                                 placeholder="Label (optional)"
                                 value={docName}
                                 onChange={e => setDocName(e.target.value)}
-                                className="flex-1 min-w-[160px] px-3.5 py-2 bg-background border border-border rounded-lg text-[13px] text-text-dark font-medium outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-muted"
+                                className="flex-1 min-w-[160px] px-3.5 py-2 bg-background border border-border rounded-lg text-[13px] text-text-dark font-medium outline-none focus:border-primary focus:ring-1 focus:ring-primary transition placeholder:text-muted"
                             />
                         </div>
-                        <label className="relative border-2 border-dashed border-border bg-surface hover:bg-background rounded-xl p-7 flex flex-col items-center justify-center text-center hover:border-primary transition-all cursor-pointer group">
+                        <label className="relative border-2 border-dashed border-border bg-surface hover:bg-background rounded-xl p-7 flex flex-col items-center justify-center text-center hover:border-primary transition cursor-pointer group">
                             <div className="w-10 h-10 rounded-full bg-background border border-border shadow-sm flex items-center justify-center mb-3 text-text group-hover:text-primary transition-colors">
                                 <FiUploadCloud size={18} />
                             </div>
@@ -286,7 +286,7 @@ export default function ProfileTab() {
                 <button
                     onClick={handleSave}
                     disabled={saving}
-                    className="flex items-center gap-2 px-6 py-2.5 bg-primary text-white rounded-xl text-[13px] font-bold shadow-sm hover:opacity-90 disabled:opacity-60 transition-all cursor-pointer"
+                    className="flex items-center gap-2 px-6 py-2.5 bg-primary text-white rounded-xl text-[13px] font-bold shadow-sm hover:opacity-90 disabled:opacity-60 transition cursor-pointer"
                 >
                     {saving ? <FiLoader className="animate-spin" size={14} /> : <FiSave size={14} />}
                     {saving ? 'Saving...' : 'Save Changes'}

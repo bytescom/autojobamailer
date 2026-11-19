@@ -176,7 +176,7 @@ export default function NotificationPanel() {
                     maxHeight: 480,
                     ...panelStyle,
                 }}
-                className="bg-background border border-border rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+                className="bg-background border border-border rounded-2xl shadow-2xl overflow-hidden flex flex-col origin-top-right animate-in fade-in zoom-in-95 duration-200"
             >
                 {/* Header */}
                 <div className="flex items-center justify-between px-4 py-3.5 border-b border-border bg-surface/60">
@@ -250,7 +250,7 @@ export default function NotificationPanel() {
                                         )}
                                         <button
                                             onClick={(e) => { e.stopPropagation(); dismiss(n.id); }}
-                                            className="opacity-0 group-hover:opacity-100 p-1 rounded-lg hover:bg-surface text-muted hover:text-text-dark transition-all cursor-pointer"
+                                            className="opacity-0 group-hover:opacity-100 p-1 rounded-lg hover:bg-surface text-muted hover:text-text-dark transition cursor-pointer"
                                             aria-label="Dismiss"
                                         >
                                             <FiX size={12} />
@@ -284,7 +284,7 @@ export default function NotificationPanel() {
             <button
                 ref={bellRef}
                 onClick={handleToggle}
-                className={`relative flex items-center justify-center w-9 h-9 rounded-xl border transition-all duration-200 cursor-pointer
+                className={`relative flex items-center justify-center w-9 h-9 rounded-xl border transition duration-200 cursor-pointer
                     ${open
                         ? "bg-primary border-primary text-white shadow-md shadow-primary/20"
                         : "bg-surface border-border text-primary hover:bg-primary/10 hover:border-primary/30"

@@ -81,7 +81,7 @@ export default function PricingTab() {
                 {plans.map((plan) => (
                     <div
                         key={plan.name}
-                        className={`relative flex flex-col bg-background border-2 ${plan.color} rounded-2xl p-6 shadow-sm transition-all duration-300 hover:shadow-md`}
+                        className={`relative flex flex-col bg-background border-2 ${plan.color} rounded-2xl p-6 shadow-sm transition duration-300 hover:shadow-md`}
                     >
                         {/* Badge */}
                         {plan.badge && (
@@ -117,7 +117,7 @@ export default function PricingTab() {
                         {/* CTA */}
                         <button
                             disabled={plan.disabled}
-                            className={`w-full py-2.5 rounded-xl text-[13px] font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${plan.ctaStyle}`}
+                            className={`w-full py-2.5 rounded-xl text-[13px] font-bold transition flex items-center justify-center gap-2 cursor-pointer ${plan.ctaStyle}`}
                         >
                             {plan.cta}
                             {!plan.disabled && <FiArrowRight size={13} />}

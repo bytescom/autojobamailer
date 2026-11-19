@@ -69,7 +69,7 @@ export default function TrackingPage() {
                             <button
                                 key={tab}
                                 onClick={() => dispatch(setFilter({ tab }))}
-                                className={`px-6 py-2 text-[13px] font-medium transition-all whitespace-nowrap sm:flex-1 text-center cursor-pointer ${currentFilters.tab === tab
+                                className={`px-6 py-2 text-[13px] font-medium transition whitespace-nowrap sm:flex-1 text-center cursor-pointer ${currentFilters.tab === tab
                                         ? 'bg-background text-text-dark border-t-[3px] border-t-primary shadow-[0_-1px_0_0_theme(colors.gray.100)]'
                                         : 'text-muted hover:text-primary hover:bg-surface border-t-[3px] border-t-transparent'
                                     }`}
@@ -89,7 +89,7 @@ export default function TrackingPage() {
                             value={currentFilters.search}
                             onChange={handleSearch}
                             placeholder="Search company, role, HR email..."
-                            className="w-full pl-10 pr-4 py-2.5 bg-surface border border-border rounded-lg text-[14px] font-medium placeholder:text-muted outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 focus:bg-background transition-all"
+                            className="w-full pl-10 pr-4 py-2.5 bg-surface border border-border rounded-lg text-[14px] font-medium placeholder:text-muted outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 focus:bg-background transition"
                         />
                     </div>
                 </div>

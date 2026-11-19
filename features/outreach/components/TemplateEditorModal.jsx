@@ -108,7 +108,7 @@ const TemplateEditorModal = ({ onClose, onSave, initialData, saveToDb }) => {
                             placeholder="e.g., Initial Outreach - Tech Founders"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="w-full px-4 py-3 bg-[#f9f9f9] border border-border/60 rounded-xl text-[14px] font-medium text-text-dark outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
+                            className="w-full px-4 py-3 bg-[#f9f9f9] border border-border/60 rounded-xl text-[14px] font-medium text-text-dark outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition"
                         />
                         <p className="text-[11px] text-muted mt-1.5 font-medium">This is for internal organization only.</p>
                     </div>
@@ -120,13 +120,13 @@ const TemplateEditorModal = ({ onClose, onSave, initialData, saveToDb }) => {
                             placeholder="Quick question about {{company}}"
                             value={subject}
                             onChange={(e) => setSubject(e.target.value)}
-                            className="w-full px-4 py-3 bg-[#f9f9f9] border border-border/60 rounded-xl text-[14px] font-medium text-text-dark outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
+                            className="w-full px-4 py-3 bg-[#f9f9f9] border border-border/60 rounded-xl text-[14px] font-medium text-text-dark outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition"
                         />
                     </div>
 
                     <div className="flex flex-col flex-1 min-h-[300px]">
                         <label className="block text-[13px] font-bold text-text-dark mb-1">Email Content</label>
-                        <div className="flex-1 border border-border/60 rounded-xl overflow-hidden flex flex-col bg-[#f9f9f9] focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/10 transition-all">
+                        <div className="flex-1 border border-border/60 rounded-xl overflow-hidden flex flex-col bg-[#f9f9f9] focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/10 transition">
                             {/* Rich text formatting bar placeholder */}
                             <div className="px-4 py-2 border-b border-border/60 bg-white flex items-center gap-4">
                                 <span className="font-bold text-[14px] cursor-pointer text-text-dark">B</span>
