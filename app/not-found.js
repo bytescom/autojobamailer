@@ -1,11 +1,6 @@
-import './globals.css'
-import { Manrope } from 'next/font/google'
-import { FiMail } from 'react-icons/fi'
-
-const manrope = Manrope({
-    variable: "--font-manrope",
-    subsets: ["latin"],
-});
+import './globals.css';
+import { manrope } from '@/lib/fonts';
+import { FiMail } from 'react-icons/fi';
 
 export const metadata = {
     title: '404 - Page Not Found | Autojobmailer',

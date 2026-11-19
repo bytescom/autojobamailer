@@ -8,13 +8,8 @@ import { useSession, signOut } from "next-auth/react";
 import { createPortal } from "react-dom";
 import { LuPanelLeftClose, LuPanelRightClose } from "react-icons/lu";
 import { FiGrid, FiBriefcase, FiFileText, FiUser, FiClock, FiSettings, FiCheckCircle, FiLogOut, FiChevronUp, FiMenu, FiX } from "react-icons/fi";
-import { Playfair_Display } from "next/font/google";
 
-
-const serif = Playfair_Display({
-    subsets: ["latin"],
-    weight: ["400", "500", "600", "700"],
-});
+const serif = { className: "font-serif" };
 
 const navItems = [
     { name: 'Dashboard', path: '/dashboard', icon: <FiGrid size={20} strokeWidth={1.5} /> },

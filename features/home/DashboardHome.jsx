@@ -10,14 +10,10 @@ import {
   FiMail, FiUser, FiMessageSquare, FiCalendar,
   FiClock, FiAlertCircle,
 } from 'react-icons/fi';
-import { Playfair_Display } from "next/font/google";
 import NotificationPanel from "@/components/layout/NotificationPanel";
 import { useScrollLock } from "@/lib/useScrollLock";
 
-const serif = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
+const serif = { className: "font-serif" };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 

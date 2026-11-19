@@ -1,14 +1,9 @@
-import { Manrope } from "next/font/google";
+import { manrope, playfair } from "@/lib/fonts";
 import { Analytics } from "@vercel/analytics/next";
 import AuthProvider from "@/lib/AuthProvider";
 import ReduxProvider from "@/components/providers/ReduxProvider";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
-
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "Autojobmailer - AI Job Application Tool & Email Generator",
@@ -20,7 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={` ${manrope.variable} h-full antialiased`}
+      className={`${manrope.variable} ${playfair.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col font-sans" suppressHydrationWarning>
