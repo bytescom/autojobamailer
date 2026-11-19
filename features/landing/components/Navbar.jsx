@@ -59,7 +59,7 @@ export default function Navbar() {
 
           {/* Primary CTA */}
           <Link
-            href="/signup"
+            href="/login"
             className="inline-flex items-center justify-center min-h-[40px] sm:min-h-[44px] rounded-lg bg-secondary sm:px-5 px-3.5 sm:py-2.5 py-1.5 text-sm sm:text-base font-semibold text-white shadow-sm hover:opacity-90 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
           >
             Login
