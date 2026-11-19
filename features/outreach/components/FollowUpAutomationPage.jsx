@@ -1,181 +1,16 @@
-"use client"
-import React, { useState, useEffect } from 'react';
+"use client";
+import React, { useState } from 'react';
 import {
-    FiCheck, FiAlertCircle, FiClock, FiPlus,
-    FiCheckCircle, FiZap, FiMail, FiX, FiEdit2,
+    FiAlertCircle, FiClock, FiPlus,
+    FiCheckCircle, FiZap, FiMail,
     FiChevronDown, FiSave, FiSend, FiInfo
 } from 'react-icons/fi';
 import TimelineStep from './TimelineStep';
-import { useScrollLock } from "@/lib/useScrollLock";
-
-
-const Toggle = ({ checked, onChange, size = 'md' }) => {
-    const w = size === 'sm' ? 'w-9 h-5' : 'w-11 h-6';
-    const dot = size === 'sm' ? 'w-3.5 h-3.5 top-[3px] left-[3px]' : 'w-4 h-4 top-1 left-1';
-    const trans = size === 'sm' ? 'translate-x-4' : 'translate-x-5';
-    return (
-        <button onClick={onChange} className={`relative ${w} rounded-full transition-colors duration-200 cursor-pointer shrink-0 ${checked ? 'bg-primary' : 'bg-border'}`} role="switch" aria-checked={checked}>
-            <span className={`absolute ${dot} bg-white rounded-full shadow-sm transition-transform duration-200 ${checked ? trans : 'translate-x-0'}`} />
-        </button>
-    );
-};
-
-const Toast = ({ message, type = 'success', onDismiss }) => {
-    useEffect(() => { const t = setTimeout(onDismiss, 3000); return () => clearTimeout(t); }, [onDismiss]);
-    return (
-        <div className={`fixed bottom-6 right-6 z-[200] flex items-center gap-3 px-4 py-3 rounded-xl shadow-xl border text-[13px] font-semibold ${type === 'success' ? 'bg-background border-green-200 text-green-800' : 'bg-background border-amber-200 text-amber-800'}`}>
-            {type === 'success' ? <FiCheckCircle size={15} className="text-green-500 shrink-0" /> : <FiInfo size={15} className="text-amber-500 shrink-0" />}
-            {message}
-            <button onClick={onDismiss} aria-label="Dismiss" className="ml-2 -mr-1 p-1.5 rounded-lg text-muted hover:text-text-dark hover:bg-surface transition-colors active:scale-90 cursor-pointer"><FiX size={16} /></button>
-        </div>
-    );
-};
-
-const StepEditModal = ({ step, onClose, onSave }) => {
-    useScrollLock(true);
-    const [waitTime, setWaitTime] = useState(step.waitTime || '3 Days');
-    const [templateName, setTemplateName] = useState(step.templateName || '');
-    const [subject, setSubject] = useState(step.subject || '');
-    const handleSave = () => { onSave(step.id, { waitTime, templateName, subject }); onClose(); };
-    const ic = "w-full px-4 py-2.5 bg-surface border border-border/60 rounded-xl text-[13.5px] font-medium text-text-dark outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition shadow-sm placeholder:text-muted";
-    return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center">
-            <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={onClose} />
-            <div className="relative bg-background rounded-2xl shadow-xl border border-border/50 w-full max-w-lg mx-4 p-6 z-10">
-                <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0"><FiEdit2 size={16} /></div>
-                        <h3 className={`text-[20px] font-bold text-text-dark tracking-tight`}>Edit Step</h3>
-                    </div>
-                    <button onClick={onClose} className="p-2 rounded-lg hover:bg-surface text-muted hover:text-text-dark transition-colors cursor-pointer"><FiX size={18} /></button>
-                </div>
-                <div className="flex flex-col gap-4">
-                    <div>
-                        <label className="block text-[12px] font-bold text-text-dark mb-1.5 ml-1">Wait Time</label>
-                        <select value={waitTime} onChange={e => setWaitTime(e.target.value)} className={`${ic} cursor-pointer`}>
-                            <option>1 Day</option><option>2 Days</option><option>3 Days</option><option>5 Days</option><option>1 Week</option><option>2 Weeks</option>
-                        </select>
-                        <p className="text-[11px] text-muted mt-1.5 font-medium ml-1">Time to wait after the previous step</p>
-                    </div>
-                    <div>
-                        <label className="block text-[12px] font-bold text-text-dark mb-1.5 ml-1">Email Template Name</label>
-                        <input type="text" value={templateName} onChange={e => setTemplateName(e.target.value)} placeholder="e.g., Follow-up: Soft Nudge" className={ic} />
-                    </div>
-                    <div>
-                        <label className="block text-[12px] font-bold text-text-dark mb-1.5 ml-1">Subject Line</label>
-                        <input type="text" value={subject} onChange={e => setSubject(e.target.value)} placeholder="e.g., Re: Touching base regarding company" className={ic} />
-                        <p className="text-[11px] text-muted mt-1.5 font-medium ml-1">Use curly brace variables for personalization tokens</p>
-                    </div>
-                    <div className="flex justify-end gap-3 mt-2 pt-4 border-t border-border/60">
-                        <button onClick={onClose} className="px-5 py-2.5 bg-background border border-border text-text-dark rounded-xl text-[13.5px] font-semibold hover:bg-surface transition-colors cursor-pointer">Cancel</button>
-                        <button onClick={handleSave} className="px-6 py-2.5 bg-primary text-white rounded-xl text-[13.5px] font-semibold flex items-center gap-2 hover:bg-primary/90 transition active:scale-[0.98] shadow-sm cursor-pointer">
-                            <FiSave size={14} /> Save Step
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const LaunchModal = ({ steps, automationActive, onClose, onLaunch }) => {
-    useScrollLock(true);
-    const [launching, setLaunching] = useState(false);
-    const handleLaunch = async () => { setLaunching(true); await new Promise(r => setTimeout(r, 1500)); setLaunching(false); onLaunch(); onClose(); };
-    return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center">
-            <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={onClose} />
-            <div className="relative bg-background rounded-2xl shadow-xl border border-border/50 w-full max-w-md mx-4 p-6 z-10">
-                <div className="flex items-center justify-between mb-5">
-                    <h3 className={`text-[20px] font-bold text-text-dark tracking-tight`}>Review & Launch</h3>
-                    <button onClick={onClose} className="p-2 rounded-lg hover:bg-surface text-muted hover:text-text-dark transition-colors cursor-pointer"><FiX size={18} /></button>
-                </div>
-                <div className="bg-surface/60 border border-border/50 rounded-xl p-4 mb-5 flex flex-col gap-3">
-                    <div className="flex justify-between items-center"><span className="text-[13px] font-medium text-muted">Automation Status</span><span className={`px-2.5 py-0.5 rounded text-[11px] font-bold ${automationActive ? 'bg-green-100 text-green-700' : 'bg-red-50 text-red-600'}`}>{automationActive ? 'Active' : 'Inactive'}</span></div>
-                    <div className="flex justify-between items-center"><span className="text-[13px] font-medium text-muted">Total Steps</span><span className="text-[13px] font-bold text-text-dark">{steps.length + 1} Emails</span></div>
-                    <div className="flex justify-between items-center"><span className="text-[13px] font-medium text-muted">Target Audience</span><span className="text-[13px] font-bold text-text-dark">1,240 Leads</span></div>
-                    <div className="flex justify-between items-center"><span className="text-[13px] font-medium text-muted">Daily Send Limit</span><span className="text-[13px] font-bold text-text-dark">50 / day</span></div>
-                </div>
-                <div className="mb-5 px-4 py-3 bg-amber-50 border border-amber-100 rounded-xl text-[12.5px] font-medium text-amber-800 flex items-start gap-2">
-                    <FiAlertCircle size={15} className="shrink-0 mt-0.5 text-amber-500" />
-                    <p>Launching will begin sending emails immediately. This cannot be undone without pausing the campaign.</p>
-                </div>
-                <div className="flex gap-3">
-                    <button onClick={onClose} className="flex-1 py-2.5 bg-background border border-border text-text-dark rounded-xl text-[13.5px] font-semibold hover:bg-surface transition-colors cursor-pointer">Cancel</button>
-                    <button onClick={handleLaunch} disabled={launching} className="flex-1 py-2.5 bg-primary text-white rounded-xl text-[13.5px] font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition active:scale-[0.98] shadow-sm cursor-pointer disabled:opacity-60">
-                        {launching ? <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <><FiSend size={14} /> Launch Campaign</>}
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const AIOptimizerPanel = ({ onClose, onApply }) => {
-    useScrollLock(true);
-    const [applying, setApplying] = useState(false);
-    const [applied, setApplied] = useState(false);
-    const suggestions = [
-        { label: 'Step 1 Wait Time', from: '3 Days', to: '2 Days', reason: 'Higher open rates on day 2 for your industry.' },
-        { label: 'Step 2 Wait Time', from: '5 Days', to: '4 Days', reason: 'Engagement peaks at 4-day follow-up windows.' },
-        { label: 'Step 3 Wait Time', from: '7 Days', to: '6 Days', reason: 'Wed morning sends yield 18% more replies.' },
-    ];
-    const handleApply = async () => { setApplying(true); await new Promise(r => setTimeout(r, 1200)); onApply(); setApplying(false); setApplied(true); };
-    return (
-        <div className="fixed inset-0 z-[100] flex justify-end">
-            <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={onClose} />
-            <div className="relative w-full sm:w-[420px] h-full bg-background shadow-2xl border-l border-border/50 flex flex-col">
-                <div className="flex items-center justify-between px-6 py-4 border-b border-border/50 bg-surface/30">
-                    <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0"><FiZap size={16} /></div>
-                        <div>
-                            <h2 className={`text-[17px] font-bold text-text-dark`}>AI Optimizer</h2>
-                            <p className="text-[11px] font-medium text-muted">Powered by live performance data</p>
-                        </div>
-                    </div>
-                    <button onClick={onClose} className="p-1.5 rounded-lg hover:bg-border/50 text-muted hover:text-text-dark transition-colors cursor-pointer"><FiX size={18} /></button>
-                </div>
-                <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-5">
-                    <div className="bg-primary/5 border border-primary/20 rounded-xl p-4 flex items-center gap-4">
-                        <div className="w-14 h-14 rounded-full border-4 border-primary/30 flex items-center justify-center shrink-0">
-                            <span className="text-[20px] font-extrabold text-primary">78</span>
-                        </div>
-                        <div>
-                            <p className="text-[11px] font-bold text-primary uppercase tracking-wider mb-0.5">Sequence Score</p>
-                            <p className="text-[13px] font-medium text-text-dark">Good. 3 optimizations available — estimated <strong>+14%</strong> reply rate uplift.</p>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 className="text-[12px] font-bold text-muted uppercase tracking-wider mb-3">Suggested Changes</h3>
-                        <div className="flex flex-col gap-3">
-                            {suggestions.map((s, i) => (
-                                <div key={i} className="p-4 bg-background border border-border/60 rounded-xl shadow-sm">
-                                    <p className="text-[13px] font-bold text-text-dark mb-1.5">{s.label}</p>
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <span className="px-2 py-0.5 bg-red-50 text-red-600 border border-red-100 rounded text-[11px] font-bold">{s.from}</span>
-                                        <span className="text-muted text-[12px]">to</span>
-                                        <span className="px-2 py-0.5 bg-green-50 text-green-700 border border-green-100 rounded text-[11px] font-bold">{s.to}</span>
-                                    </div>
-                                    <p className="text-[12px] text-muted font-medium">{s.reason}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="p-4 bg-surface/60 border border-border/40 rounded-xl">
-                        <div className="flex items-center gap-2 mb-2"><FiInfo size={13} className="text-primary shrink-0" /><h3 className="text-[12px] font-bold text-text-dark">Why these suggestions?</h3></div>
-                        <p className="text-[12px] text-muted font-medium leading-relaxed">Based on aggregate data from 12,000+ similar campaigns in the SaaS outreach category over the past 90 days.</p>
-                    </div>
-                </div>
-                <div className="p-5 border-t border-border/50 bg-surface/30 flex gap-3 shrink-0">
-                    <button onClick={onClose} className="flex-1 py-2.5 bg-background border border-border text-text-dark rounded-xl text-[13px] font-bold hover:bg-surface transition-colors cursor-pointer shadow-sm">Dismiss</button>
-                    <button onClick={handleApply} disabled={applying || applied} className={`flex-1 py-2.5 rounded-xl text-[13px] font-bold flex items-center justify-center gap-2 transition active:scale-[0.98] shadow-sm cursor-pointer disabled:opacity-60 ${applied ? 'bg-emerald-500 text-white' : 'bg-primary text-white hover:bg-primary/90'}`}>
-                        {applying ? <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : applied ? <><FiCheckCircle size={14} /> Applied!</> : <><FiZap size={14} /> Apply All Changes</>}
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
-};
+import Toggle from './Toggle';
+import Toast from './Toast';
+import StepEditModal from './StepEditModal';
+import FollowUpLaunchModal from './FollowUpLaunchModal';
+import AIOptimizerPanel from './AIOptimizerPanel';
 
 export default function FollowUpAutomationPage() {
     const [automationActive, setAutomationActive] = useState(true);
@@ -233,13 +68,10 @@ export default function FollowUpAutomationPage() {
     const totalDuration = steps.reduce((acc, s) => { const n = parseInt(s.waitTime) || 0; return acc + n * (s.waitTime.toLowerCase().includes('week') ? 7 : 1); }, 0);
     const allValid = steps.every(s => s.templateName && s.subject);
 
-    // Mobile: natural page flow (a fixed height here let the sidebar squeeze the
-    // main column to 0px, hiding Strategy + Timeline entirely). Desktop keeps
-    // the app-style fixed height with internal scrolling columns.
     return (
         <div className="relative flex flex-col h-auto min-h-full lg:h-full lg:min-h-0 w-full max-w-full overflow-x-hidden px-1 sm:px-2 pb-2">
             {editingStep && <StepEditModal step={editingStep} onClose={() => setEditingStep(null)} onSave={handleSaveStep} />}
-            {showLaunchModal && <LaunchModal steps={steps} automationActive={automationActive} onClose={() => setShowLaunchModal(false)} onLaunch={handleLaunched} />}
+            {showLaunchModal && <FollowUpLaunchModal steps={steps} automationActive={automationActive} onClose={() => setShowLaunchModal(false)} onLaunch={handleLaunched} />}
             {showAIOptimizer && <AIOptimizerPanel onClose={() => setShowAIOptimizer(false)} onApply={handleApplyAI} />}
             {toast && <Toast message={toast.message} type={toast.type} onDismiss={() => setToast(null)} />}
 
@@ -250,7 +82,7 @@ export default function FollowUpAutomationPage() {
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
                     </div>
                     <div>
-                        <h1 className={`text-[24px] md:text-[28px] font-extrabold text-text-dark leading-[1.1] mb-0.5 tracking-tight`}>Follow-Up Automation</h1>
+                        <h1 className="text-[24px] md:text-[28px] font-extrabold text-text-dark leading-[1.1] mb-0.5 tracking-tight">Follow-Up Automation</h1>
                         <p className="text-[13px] font-medium text-muted">Campaign: <span className="font-bold text-text-dark">Q4 Enterprise Outreach 2024</span></p>
                     </div>
                 </div>
@@ -268,13 +100,13 @@ export default function FollowUpAutomationPage() {
                 </div>
             </div>
 
-            {/* Prototype notice — this page is not wired to the backend yet */}
+            {/* Prototype notice */}
             <div className="mb-6 px-4 py-3 bg-amber-50 border border-amber-200 rounded-lg text-[13px] font-medium text-amber-800 flex items-center gap-2.5 shrink-0">
                 <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
                 Prototype preview — follow-up sequences, lead counts, and launching are not connected to the backend yet. Nothing you configure here sends emails.
             </div>
 
-            {/* Main Grid — column stack on mobile (no internal scrolling), two columns on lg */}
+            {/* Main Grid */}
             <div className="flex flex-col lg:flex-row gap-6 lg:flex-1 lg:min-h-0 pb-10">
                 {/* Left Column */}
                 <div className="lg:flex-1 lg:overflow-y-auto flex flex-col gap-6 lg:pr-1 min-w-0">
