@@ -1,4 +1,4 @@
-# Autojobmailer 🚀 `v3.3.0`
+# Autojobmailer 🚀 `v3.3.1`
 
 > **AI-Powered Job Application Tool, Cold Email Generator & Outreach Automation Platform**
 

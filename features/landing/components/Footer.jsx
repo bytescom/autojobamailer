@@ -133,7 +133,7 @@ export default function Footer() {
                                 <span>•</span>
                                 <Link href="/contact" className="hover:text-primary transition-colors">Contact</Link>
                                 <span>•</span>
-                                <span className="font-semibold text-text-dark/60 bg-gray-100 px-1.5 py-0.5 rounded">v3.3.0</span>
+                                <span className="font-semibold text-text-dark/60 bg-gray-100 px-1.5 py-0.5 rounded">v3.3.1</span>
                             </div>
                         </div>
                     </div>

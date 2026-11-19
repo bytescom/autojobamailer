@@ -34,7 +34,7 @@ export default function Settings() {
                             Settings
                         </h1>
                         <span className="text-[11px] font-bold text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full">
-                            v3.3.0
+                            v3.3.1
                         </span>
                     </div>
                     <p className="text-[13px] sm:text-[14px] text-muted font-medium">Manage your account settings and preferences.</p>

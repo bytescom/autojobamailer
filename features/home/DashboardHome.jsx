@@ -361,7 +361,7 @@ const Dashboard = () => {
           
           <div className="relative z-10">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-primary/10 text-primary border border-primary/20 mb-3">
-              ✨ Version 3.3.0 Live
+              ✨ Version 3.3.1 Live
             </span>
             <h2 className="text-[20px] sm:text-[22px] lg:text-[24px] leading-[1.2] font-bold text-text-dark mb-2 tracking-tight">
               AI Cold Email & Sequence Automation

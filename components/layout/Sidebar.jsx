@@ -313,7 +313,7 @@ export default function Sidebar() {
                                             <FiUser size={15} className="text-muted" /> Profile & Settings
                                         </span>
                                         <span className="text-[10.5px] font-bold text-muted bg-surface border border-border px-1.5 py-0.5 rounded">
-                                            v3.3.0
+                                            v3.3.1
                                         </span>
                                     </Link>
                                     <div className="mx-4 my-1 border-t border-border" />
