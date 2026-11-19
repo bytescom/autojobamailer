@@ -26,7 +26,7 @@ const Toast = ({ message, type = 'success', onDismiss }) => {
         <div className={`fixed bottom-6 right-6 z-[200] flex items-center gap-3 px-4 py-3 rounded-xl shadow-xl border text-[13px] font-semibold ${type === 'success' ? 'bg-background border-green-200 text-green-800' : 'bg-background border-amber-200 text-amber-800'}`}>
             {type === 'success' ? <FiCheckCircle size={15} className="text-green-500 shrink-0" /> : <FiInfo size={15} className="text-amber-500 shrink-0" />}
             {message}
-            <button onClick={onDismiss} className="ml-2 text-muted hover:text-text-dark transition-colors cursor-pointer"><FiX size={14} /></button>
+            <button onClick={onDismiss} aria-label="Dismiss" className="ml-2 -mr-1 p-1.5 rounded-lg text-muted hover:text-text-dark hover:bg-surface transition-colors active:scale-90 cursor-pointer"><FiX size={16} /></button>
         </div>
     );
 };
@@ -37,7 +37,7 @@ const StepEditModal = ({ step, onClose, onSave }) => {
     const [templateName, setTemplateName] = useState(step.templateName || '');
     const [subject, setSubject] = useState(step.subject || '');
     const handleSave = () => { onSave(step.id, { waitTime, templateName, subject }); onClose(); };
-    const ic = "w-full px-4 py-2.5 bg-surface border border-border/60 rounded-xl text-[13.5px] font-medium text-text-dark outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all shadow-sm placeholder:text-muted";
+    const ic = "w-full px-4 py-2.5 bg-surface border border-border/60 rounded-xl text-[13.5px] font-medium text-text-dark outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition shadow-sm placeholder:text-muted";
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center">
             <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={onClose} />
@@ -68,7 +68,7 @@ const StepEditModal = ({ step, onClose, onSave }) => {
                     </div>
                     <div className="flex justify-end gap-3 mt-2 pt-4 border-t border-border/60">
                         <button onClick={onClose} className="px-5 py-2.5 bg-background border border-border text-text-dark rounded-xl text-[13.5px] font-semibold hover:bg-surface transition-colors cursor-pointer">Cancel</button>
-                        <button onClick={handleSave} className="px-6 py-2.5 bg-primary text-white rounded-xl text-[13.5px] font-semibold flex items-center gap-2 hover:bg-primary/90 transition-colors shadow-sm cursor-pointer">
+                        <button onClick={handleSave} className="px-6 py-2.5 bg-primary text-white rounded-xl text-[13.5px] font-semibold flex items-center gap-2 hover:bg-primary/90 transition active:scale-[0.98] shadow-sm cursor-pointer">
                             <FiSave size={14} /> Save Step
                         </button>
                     </div>
@@ -102,7 +102,7 @@ const LaunchModal = ({ steps, automationActive, onClose, onLaunch }) => {
                 </div>
                 <div className="flex gap-3">
                     <button onClick={onClose} className="flex-1 py-2.5 bg-background border border-border text-text-dark rounded-xl text-[13.5px] font-semibold hover:bg-surface transition-colors cursor-pointer">Cancel</button>
-                    <button onClick={handleLaunch} disabled={launching} className="flex-1 py-2.5 bg-primary text-white rounded-xl text-[13.5px] font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors shadow-sm cursor-pointer disabled:opacity-60">
+                    <button onClick={handleLaunch} disabled={launching} className="flex-1 py-2.5 bg-primary text-white rounded-xl text-[13.5px] font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition active:scale-[0.98] shadow-sm cursor-pointer disabled:opacity-60">
                         {launching ? <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <><FiSend size={14} /> Launch Campaign</>}
                     </button>
                 </div>
@@ -168,7 +168,7 @@ const AIOptimizerPanel = ({ onClose, onApply }) => {
                 </div>
                 <div className="p-5 border-t border-border/50 bg-surface/30 flex gap-3 shrink-0">
                     <button onClick={onClose} className="flex-1 py-2.5 bg-background border border-border text-text-dark rounded-xl text-[13px] font-bold hover:bg-surface transition-colors cursor-pointer shadow-sm">Dismiss</button>
-                    <button onClick={handleApply} disabled={applying || applied} className={`flex-1 py-2.5 rounded-xl text-[13px] font-bold flex items-center justify-center gap-2 transition-colors shadow-sm cursor-pointer disabled:opacity-60 ${applied ? 'bg-emerald-500 text-white' : 'bg-primary text-white hover:bg-primary/90'}`}>
+                    <button onClick={handleApply} disabled={applying || applied} className={`flex-1 py-2.5 rounded-xl text-[13px] font-bold flex items-center justify-center gap-2 transition active:scale-[0.98] shadow-sm cursor-pointer disabled:opacity-60 ${applied ? 'bg-emerald-500 text-white' : 'bg-primary text-white hover:bg-primary/90'}`}>
                         {applying ? <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : applied ? <><FiCheckCircle size={14} /> Applied!</> : <><FiZap size={14} /> Apply All Changes</>}
                     </button>
                 </div>
@@ -233,8 +233,11 @@ export default function FollowUpAutomationPage() {
     const totalDuration = steps.reduce((acc, s) => { const n = parseInt(s.waitTime) || 0; return acc + n * (s.waitTime.toLowerCase().includes('week') ? 7 : 1); }, 0);
     const allValid = steps.every(s => s.templateName && s.subject);
 
+    // Mobile: natural page flow (a fixed height here let the sidebar squeeze the
+    // main column to 0px, hiding Strategy + Timeline entirely). Desktop keeps
+    // the app-style fixed height with internal scrolling columns.
     return (
-        <div className="relative flex flex-col h-[calc(100vh-2rem)] lg:h-full w-full min-h-0 max-w-full overflow-x-hidden px-1 sm:px-2 pb-2">
+        <div className="relative flex flex-col h-auto min-h-full lg:h-full lg:min-h-0 w-full max-w-full overflow-x-hidden px-1 sm:px-2 pb-2">
             {editingStep && <StepEditModal step={editingStep} onClose={() => setEditingStep(null)} onSave={handleSaveStep} />}
             {showLaunchModal && <LaunchModal steps={steps} automationActive={automationActive} onClose={() => setShowLaunchModal(false)} onLaunch={handleLaunched} />}
             {showAIOptimizer && <AIOptimizerPanel onClose={() => setShowAIOptimizer(false)} onApply={handleApplyAI} />}
@@ -259,7 +262,7 @@ export default function FollowUpAutomationPage() {
                     <button onClick={handleSaveDraft} className="flex items-center gap-1.5 px-4 py-2 bg-background border border-border/60 shadow-sm rounded-lg text-[13px] font-bold text-text-dark hover:bg-surface transition-colors cursor-pointer">
                         <FiSave size={13} className="text-muted" /> Save Draft
                     </button>
-                    <button onClick={() => setShowLaunchModal(true)} className="flex items-center gap-1.5 px-4 py-2 bg-primary text-white shadow-sm rounded-lg text-[13px] font-bold hover:bg-primary/90 transition-colors cursor-pointer">
+                    <button onClick={() => setShowLaunchModal(true)} className="flex items-center gap-1.5 px-4 py-2 bg-primary text-white shadow-sm rounded-lg text-[13px] font-bold hover:bg-primary/90 transition active:scale-[0.98] cursor-pointer">
                         <FiSend size={13} /> Review & Launch
                     </button>
                 </div>
@@ -271,10 +274,10 @@ export default function FollowUpAutomationPage() {
                 Prototype preview — follow-up sequences, lead counts, and launching are not connected to the backend yet. Nothing you configure here sends emails.
             </div>
 
-            {/* Main Grid */}
-            <div className="flex flex-col lg:flex-row gap-6 flex-1 min-h-0 pb-10">
+            {/* Main Grid — column stack on mobile (no internal scrolling), two columns on lg */}
+            <div className="flex flex-col lg:flex-row gap-6 lg:flex-1 lg:min-h-0 pb-10">
                 {/* Left Column */}
-                <div className="flex-1 flex flex-col gap-6 overflow-y-auto pr-1">
+                <div className="lg:flex-1 lg:overflow-y-auto flex flex-col gap-6 lg:pr-1 min-w-0">
 
                     {/* Strategy Configuration */}
                     <section className="bg-background border border-border/60 rounded-xl shadow-sm p-6">
@@ -291,19 +294,19 @@ export default function FollowUpAutomationPage() {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                             <div>
                                 <label className="block text-[12px] font-bold text-text-dark mb-1.5">Default Wait Time</label>
-                                <select value={defaultWaitTime} onChange={e => setDefaultWaitTime(e.target.value)} className="w-full px-3 py-2.5 bg-surface border border-border/60 rounded-xl text-[13.5px] font-medium text-text-dark outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all cursor-pointer">
+                                <select value={defaultWaitTime} onChange={e => setDefaultWaitTime(e.target.value)} className="w-full px-3 py-2.5 bg-surface border border-border/60 rounded-xl text-[13.5px] font-medium text-text-dark outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition cursor-pointer">
                                     <option>1 Day</option><option>2 Days</option><option>3 Days</option><option>5 Days</option><option>1 Week</option>
                                 </select>
                                 <p className="text-[11px] text-muted mt-1.5 font-medium">Applied to newly added steps</p>
                             </div>
                             <div>
                                 <label className="block text-[12px] font-bold text-text-dark mb-1.5">Maximum Follow-ups</label>
-                                <input type="number" value={maxFollowups} min="1" max="20" onChange={e => setMaxFollowups(e.target.value)} className="w-full px-3 py-2.5 bg-surface border border-border/60 rounded-xl text-[13.5px] font-medium text-text-dark outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" />
+                                <input type="number" value={maxFollowups} min="1" max="20" onChange={e => setMaxFollowups(e.target.value)} className="w-full px-3 py-2.5 bg-surface border border-border/60 rounded-xl text-[13.5px] font-medium text-text-dark outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition" />
                                 <p className="text-[11px] text-muted mt-1.5 font-medium">Hard cap on steps per contact</p>
                             </div>
                             <div>
                                 <label className="block text-[12px] font-bold text-text-dark mb-1.5">Delay Calculation</label>
-                                <select value={delayCalculation} onChange={e => setDelayCalculation(e.target.value)} className="w-full px-3 py-2.5 bg-surface border border-border/60 rounded-xl text-[13.5px] font-medium text-text-dark outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all cursor-pointer">
+                                <select value={delayCalculation} onChange={e => setDelayCalculation(e.target.value)} className="w-full px-3 py-2.5 bg-surface border border-border/60 rounded-xl text-[13.5px] font-medium text-text-dark outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition cursor-pointer">
                                     <option>Calendar Days</option><option>Business Days</option>
                                 </select>
                                 <p className="text-[11px] text-muted mt-1.5 font-medium">How intervals are measured</p>
@@ -318,7 +321,7 @@ export default function FollowUpAutomationPage() {
                                 <h2 className="text-[16px] font-bold text-text-dark mb-0.5">Sequence Timeline</h2>
                                 <p className="text-[12.5px] text-muted font-medium">{steps.length + 1} emails &middot; ~{totalDuration} days total cadence</p>
                             </div>
-                            <button onClick={handleAddStep} className="flex items-center gap-1.5 px-4 py-2 bg-primary text-white rounded-lg text-[13px] font-bold hover:bg-primary/90 transition-colors shadow-sm cursor-pointer">
+                            <button onClick={handleAddStep} className="flex items-center gap-1.5 px-4 py-2 bg-primary text-white rounded-lg text-[13px] font-bold hover:bg-primary/90 transition active:scale-[0.98] shadow-sm cursor-pointer">
                                 <FiPlus size={14} /> Add Step
                             </button>
                         </div>
@@ -337,9 +340,9 @@ export default function FollowUpAutomationPage() {
                                 </div>
                             </div>
                             {steps.map((step, index) => (
-                                <TimelineStep key={step.id} step={step} index={index} moveStep={handleMoveStep} onEdit={handleEditStep} onDuplicate={handleDuplicateStep} onDelete={handleDeleteStep} />
+                                <TimelineStep key={step.id} step={step} index={index} isLast={index === steps.length - 1} moveStep={handleMoveStep} onEdit={handleEditStep} onDuplicate={handleDuplicateStep} onDelete={handleDeleteStep} />
                             ))}
-                            <button onClick={handleAddStep} className="w-full mt-2 py-4 border-2 border-dashed border-border/60 rounded-xl flex items-center justify-center gap-2 text-muted hover:text-primary hover:border-primary/40 hover:bg-primary/5 transition-all font-bold text-[13px] cursor-pointer">
+                            <button onClick={handleAddStep} className="w-full mt-2 py-4 border-2 border-dashed border-border/60 rounded-xl flex items-center justify-center gap-2 text-muted hover:text-primary hover:border-primary/40 hover:bg-primary/5 transition font-bold text-[13px] cursor-pointer">
                                 <FiPlus size={14} /> Click to insert a new step
                             </button>
                         </div>
@@ -435,7 +438,7 @@ export default function FollowUpAutomationPage() {
                                     ))}
                                 </div>
                                 <div className="mt-5 flex flex-col gap-2.5">
-                                    <button onClick={() => setShowLaunchModal(true)} className="w-full py-2.5 bg-primary text-white rounded-xl text-[13.5px] font-bold hover:bg-primary/90 transition-colors shadow-sm cursor-pointer flex items-center justify-center gap-2">
+                                    <button onClick={() => setShowLaunchModal(true)} className="w-full py-2.5 bg-primary text-white rounded-xl text-[13.5px] font-bold hover:bg-primary/90 transition active:scale-[0.98] shadow-sm cursor-pointer flex items-center justify-center gap-2">
                                         <FiSend size={14} /> Review & Launch
                                     </button>
                                     <button onClick={handleSaveDraft} className="w-full py-2 bg-transparent text-muted rounded-xl text-[13px] font-bold hover:text-text-dark transition-colors cursor-pointer">Save Draft</button>
@@ -443,7 +446,7 @@ export default function FollowUpAutomationPage() {
                             </div>
                         </div>
 
-                        <button onClick={() => setShowAIOptimizer(true)} className="w-full bg-background border border-border/60 rounded-xl p-4 shadow-sm flex items-start gap-3 hover:shadow-md hover:border-primary/30 transition-all cursor-pointer text-left group">
+                        <button onClick={() => setShowAIOptimizer(true)} className="w-full bg-background border border-border/60 rounded-xl p-4 shadow-sm flex items-start gap-3 hover:shadow-md hover:border-primary/30 transition cursor-pointer text-left group">
                             <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-primary shrink-0 group-hover:bg-primary/10 transition-colors"><FiZap size={16} /></div>
                             <div className="flex-1 min-w-0">
                                 <h4 className="text-[13px] font-bold text-primary mb-0.5">AI Optimizer Available</h4>

@@ -26,7 +26,7 @@ const IntegrationsTab = () => {
     const isConnected = status === 'authenticated' && gmailConnected === true;
 
     const handleDisconnect = async () => {
-        if (!window.confirm('Disconnect Gmail? You will stay signed in to Desento, but campaigns cannot send emails until you reconnect.')) return;
+        if (!window.confirm('Disconnect Gmail? You will stay signed in to Autojobmailer, but campaigns cannot send emails until you reconnect.')) return;
         setDisconnecting(true);
         setDisconnectError('');
         try {

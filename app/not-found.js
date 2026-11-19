@@ -8,7 +8,7 @@ const manrope = Manrope({
 });
 
 export const metadata = {
-    title: '404 - Page Not Found | Desento',
+    title: '404 - Page Not Found | Autojobmailer',
     description: 'The page you are looking for does not exist.',
 }
 

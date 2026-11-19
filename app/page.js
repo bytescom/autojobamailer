@@ -1,14 +1,11 @@
-import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
+import LandingPage from "@/features/landing/LandingPage";
 
-const LandingPage = dynamic(() => import('@/features/landing/LandingPage'), {
-    ssr: true,
-});
+export const metadata = {
+  title: "Autojobmailer - AI Job Application Tool & Email Generator",
+  description: "Automate job applications with Autojobmailer using our personalized AI job application email generator, smart follow-ups, and a built-in application tracker.",
+  keywords: ["automate job applications", "AI job application tool", "job application email generator", "job application tracker", "auto apply to jobs"],
+};
 
-export default function Page() {
-    return (
-        <Suspense>
-            <LandingPage />
-        </Suspense>
-    );
+export default function Home() {
+  return <LandingPage />;
 }

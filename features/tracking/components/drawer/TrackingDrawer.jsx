@@ -139,7 +139,7 @@ export default function TrackingDrawer() {
                                     {data.followUp.total ? (
                                         <div className="w-full h-1.5 bg-surface rounded-full overflow-hidden">
                                             <div
-                                                className="h-full bg-primary rounded-full transition-all duration-500"
+                                                className="h-full bg-primary rounded-full transition duration-500"
                                                 style={{ width: `${(data.followUp.completed / data.followUp.total) * 100}%` }}
                                             />
                                         </div>

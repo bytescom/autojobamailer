@@ -24,6 +24,13 @@ const nextConfig = {
     }
     return config;
   },
+  async redirects() {
+    return [
+      { source: '/sign-up', destination: '/signup', permanent: true },
+      { source: '/sign-in', destination: '/login', permanent: true },
+      { source: '/signin', destination: '/login', permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

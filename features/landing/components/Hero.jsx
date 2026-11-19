@@ -1,55 +1,78 @@
 "use client";
 
-import React from 'react'
-import Link from 'next/link'
-import DesentoHeroIllustration from '@/components/DesentoHeroIllustration'
+import React from 'react';
+import Link from 'next/link';
+import { FiArrowRight } from 'react-icons/fi';
 
 const Hero = () => {
     return (
-        <section className="relative w-full overflow-hidden bg-background min-h-[82vh] flex items-center pt-6 pb-14 lg:pt-8 lg:pb-16">
-            {/* Layered Background */}
-            <div className="absolute inset-0 pointer-events-none z-0">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_70%_50%_at_50%_50%,#000_20%,transparent_100%)] opacity-50"></div>
-                <div className="absolute top-[-10%] right-[10%] w-[700px] h-[700px] bg-primary/8 rounded-full blur-[140px] animate-pulse" style={{ animationDuration: '5s' }}></div>
-                <div className="absolute bottom-[-15%] left-[5%] w-[600px] h-[600px] bg-secondary/6 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '7s' }}></div>
-                <div className="absolute top-[40%] left-[50%] w-[400px] h-[400px] bg-primary-dark/5 rounded-full blur-[100px]"></div>
-            </div>
+        <main className="min-h-[85vh] w-full relative flex items-center justify-center">
+            {/* Dashed Center Fade Grid */}
+            <div
+                className="absolute inset-0 z-0 pointer-events-none"
+                style={{
+                    backgroundImage: `linear-gradient(to right, #d6d3d1 1px, transparent 1px),linear-gradient(to bottom, #d6d3d1 1px, transparent 1px)`,
+                    backgroundSize: "20px 20px",
+                    maskImage: `repeating-linear-gradient(to right, black 0px, black 3px, transparent 3px, transparent 8px),repeating-linear-gradient(to bottom, black 0px, black 3px, transparent 3px, transparent 8px),radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)`,
+                    WebkitMaskImage: `repeating-linear-gradient(to right, black 0px, black 3px, transparent 3px, transparent 8px),repeating-linear-gradient(to bottom, black 0px, black 3px, transparent 3px, transparent 8px),radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)`,
+                    maskComposite: "intersect",
+                    WebkitMaskComposite: "source-in",
+                }}
+            />
 
-            <div className="relative z-10 max-w-[1280px] w-full mx-auto px-6 sm:px-8 lg:px-12 grid lg:grid-cols-2 gap-16 lg:gap-8 items-center">
-                
-                {/* Left Column (Text & CTAs) */}
-                <div className="flex flex-col items-start text-left lg:pr-12">
+            <div className="relative z-10 max-w-3xl sm:max-w-4xl sm:mx-auto px-4 lg:px-8 py-16 md:py-24 flex flex-col items-start sm:items-center text-left sm:text-center gap-6 sm:gap-8">
 
-                    {/* Heading */}
-                    <h1 className="text-[2.75rem] sm:text-6xl lg:text-[4.25rem] font-semibold tracking-tight text-text-dark leading-[1.05] mb-6">
-                        Outreach for <br />
-                        <span className="text-text-dark">professionals</span>
-                    </h1>
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-secondary/25 bg-secondary/10 whitespace-nowrap">
+                    <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-secondary animate-pulse" />
+                    <span className="font-mono text-sm font-medium text-secondary tracking-wide">
+                        AI-Powered Job Application Tool
+                    </span>
+                </div>
 
-                    {/* Subtitle */}
-                    <p className="text-lg sm:text-[22px] text-text max-w-lg leading-[1.6] font-normal mb-10">
-                        The best way to reach humans instead of spam folders. Create personalized emails and automate outreach at scale.
-                    </p>
+                {/* Heading */}
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter text-text-dark drop-shadow-sm leading-[1.1]">
+                    Stop Applying Manually. <br className="hidden sm:block" />
+                    <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary drop-shadow-sm">
+                        Let AI Send 100+ Applications for You.
+                    </span>
+                </h1>
 
-                    {/* Buttons */}
-                    <div className="flex flex-wrap items-center gap-6">
-                        <Link href="/signup" className="inline-flex items-center justify-center h-12 px-6 rounded-full text-[15px] font-medium bg-text-dark text-white hover:bg-black hover:shadow-lg hover:shadow-text-dark/20 transition-all duration-200">
-                            Get started
+                {/* Subtitle */}
+                <h2 className="text-md sm:text-xl md:text-2xl text-text/80 max-w-3xl leading-relaxed px-2">
+                    Create personalized emails, send applications faster, and keep track of every response — without repeating the same work.
+                </h2>
+
+                {/* Action CTA Section */}
+                <div className="w-full flex flex-col items-center justify-center gap-4 pt-2">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+                        <Link
+                            href="/signup"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[50px] rounded-lg bg-secondary px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-secondary/25 hover:opacity-90 transition-all duration-200 active:scale-95"
+                        >
+                            Get Started Free
+                            <FiArrowRight size={18} />
+                        </Link>
+                        <Link
+                            href="/#how-it-works"
+                            className="w-full sm:w-auto inline-flex items-center justify-center min-h-[50px] rounded-lg border border-gray-300 bg-white px-6 py-3.5 text-base font-semibold text-text-dark hover:bg-gray-50 transition-all duration-200 shadow-sm"
+                        >
+                            See How It Works
                         </Link>
                     </div>
 
-                </div>
-
-                {/* Right Column (Interactive Dashboard UI) */}
-                <div className="relative w-full flex items-center justify-center lg:justify-end z-10">
-                    <div className="w-full max-w-[540px] [zoom:0.95] lg:[zoom:0.8] lg:mr-16">
-                        <DesentoHeroIllustration />
+                    <div className="mt-3 flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-text/70 font-medium">
+                        <span className="text-primary font-semibold">✨ Free forever plan available</span>
+                        <span>•</span>
+                        <span>No credit card required</span>
+                        <span>•</span>
+                        <span>Direct Gmail sync</span>
                     </div>
                 </div>
 
             </div>
-        </section>
-    )
-}
+        </main>
+    );
+};
 
-export default Hero
+export default Hero;

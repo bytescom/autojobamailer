@@ -110,8 +110,8 @@ function DetailModal({ app, onClose }) {
         role="dialog"
         aria-modal="true"
         aria-label={`${app.company} application details`}
-        className="fixed inset-y-0 right-0 z-[70] w-full max-w-md bg-background border-l border-border shadow-2xl flex flex-col animate-slide-in-right"
-        style={{ animation: 'slideInRight 0.25s cubic-bezier(0.16,1,0.3,1)' }}
+        className="fixed inset-y-0 right-0 z-[70] w-full max-w-md bg-background border-l border-border shadow-2xl flex flex-col animate-in slide-in-from-right duration-300"
+
       >
         {/* Header */}
         <div className="flex items-start justify-between p-6 border-b border-border shrink-0">
@@ -236,13 +236,6 @@ function DetailModal({ app, onClose }) {
           </Link>
         </div>
       </div>
-
-      <style jsx global>{`
-        @keyframes slideInRight {
-          from { transform: translateX(100%); opacity: 0; }
-          to   { transform: translateX(0);    opacity: 1; }
-        }
-      `}</style>
     </>
   );
 }
@@ -338,7 +331,7 @@ const Dashboard = () => {
         {loading
           ? [...Array(4)].map((_, i) => <StatSkeleton key={i} />)
           : quickStats?.map((stat, i) => (
-              <article key={i} className="bg-background px-4 py-3 rounded-xl border border-border shadow-[0_2px_8px_-4px_rgba(0,0,0,0.02)] flex flex-col justify-between min-h-[110px] hover:-translate-y-0.5 transition-transform group">
+              <article key={i} className="bg-background px-4 py-3 rounded-xl border border-border shadow-[0_2px_8px_-4px_rgba(0,0,0,0.02)] flex flex-col justify-between min-h-[110px] transition duration-200 hover:-translate-y-1 hover:shadow-[0_10px_24px_-10px_rgba(79,70,229,0.18)] hover:border-primary/30 active:scale-[0.98] group">
                 <div className="flex items-start justify-between mb-4">
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center border ${stat.colorClass}`}>
                     {stat.icon}
@@ -367,7 +360,7 @@ const Dashboard = () => {
           <div className="absolute bottom-0 left-32 w-48 h-48 bg-secondary/20 rounded-full blur-[60px]" />
           <div className={`relative z-10 max-w-sm ${serif.className}`}>
             <h2 className="text-[24px] lg:text-[28px] leading-[1.2] font-semibold text-text-dark mb-3 tracking-tight">
-              Desento 3.0 launch will be live on 25&apos; July.
+              Autojobmailer 3.0 launch will be live on 25&apos; July.
             </h2>
             <p className="text-[14px] text-text font-medium tracking-wide mb-6">
               Set a reminder and tune in live to catch all the latest updates.
@@ -396,9 +389,9 @@ const Dashboard = () => {
                 <div className="w-full bg-surface animate-pulse rounded-xl" />
               ) : (
                 <>
-                  <div className="bg-primary transition-all duration-1000 ease-out hover:opacity-90" style={{ width: `${overview?.sentPct || 0}%` }} />
-                  <div className="bg-secondary transition-all duration-1000 ease-out hover:opacity-90" style={{ width: `${overview?.repliedPct || 0}%` }} />
-                  <div className="bg-emerald-500 transition-all duration-1000 ease-out hover:opacity-90" style={{ width: `${overview?.interviewPct || 0}%` }} />
+                  <div className="bg-primary transition duration-1000 ease-out hover:opacity-90" style={{ width: `${overview?.sentPct || 0}%` }} />
+                  <div className="bg-secondary transition duration-1000 ease-out hover:opacity-90" style={{ width: `${overview?.repliedPct || 0}%` }} />
+                  <div className="bg-emerald-500 transition duration-1000 ease-out hover:opacity-90" style={{ width: `${overview?.interviewPct || 0}%` }} />
                   {(overview?.sentPct + overview?.repliedPct + overview?.interviewPct) < 100 && (
                     <div className="bg-surface flex-1" />
                   )}
@@ -464,7 +457,7 @@ const Dashboard = () => {
                 <button
                   key={log.id}
                   onClick={() => setSelectedApp(log)}
-                  className="w-full text-left grid grid-cols-1 sm:grid-cols-[2fr_2fr_1fr_1fr] items-center px-4 py-4 border border-border rounded-lg hover:bg-surface hover:border-primary/30 transition-all cursor-pointer group"
+                  className="w-full text-left grid grid-cols-1 sm:grid-cols-[2fr_2fr_1fr_1fr] items-center px-4 py-4 border border-border rounded-lg hover:bg-surface hover:border-primary/30 transition cursor-pointer group"
                 >
                   {/* Company */}
                   <div className="flex items-center gap-3">

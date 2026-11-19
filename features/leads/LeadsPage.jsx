@@ -39,7 +39,7 @@ const LeadAccordionRow = ({ lead, onDelete, onEdit }) => {
     const avatarStyle = getAvatarStyle(lead.company);
 
     return (
-        <div className={`bg-background border rounded-xl transition-all shadow-sm ${open ? 'border-primary/30 ring-1 ring-primary/10' : 'border-border'}`}>
+        <div className={`bg-background border rounded-xl transition shadow-sm ${open ? 'border-primary/30 ring-1 ring-primary/10' : 'border-border'}`}>
             <button
                 onClick={() => setOpen(v => !v)}
                 className="w-full flex items-center gap-3 px-4 py-3.5 hover:bg-surface/50 transition-colors text-left rounded-xl cursor-pointer"
@@ -205,7 +205,7 @@ const ContactDetailsPanel = ({ lead, onClose, onEdit }) => {
                     >
                         <FiEdit2 size={14} /> Edit Contact
                     </button>
-                    <button className="px-4 py-2.5 bg-primary text-white text-[13px] font-bold rounded-lg hover:bg-primary/90 transition-colors cursor-pointer shadow-sm flex items-center gap-2">
+                    <button className="px-4 py-2.5 bg-primary text-white text-[13px] font-bold rounded-lg hover:bg-primary/90 transition active:scale-[0.98] cursor-pointer shadow-sm flex items-center gap-2">
                         <FiMail size={14} /> Send Email
                     </button>
                 </div>
@@ -284,7 +284,7 @@ const AddContactForm = ({ onClose, onSave, editingLead }) => {
         }
     };
 
-    const inputCls = "w-full px-4 py-2.5 bg-background border border-border rounded-lg text-[13.5px] font-medium placeholder:text-muted outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all shadow-sm";
+    const inputCls = "w-full px-4 py-2.5 bg-background border border-border rounded-lg text-[13.5px] font-medium placeholder:text-muted outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition shadow-sm";
 
     return (
         <div className="absolute inset-0 z-50 flex items-end sm:items-center justify-center">
@@ -331,7 +331,7 @@ const AddContactForm = ({ onClose, onSave, editingLead }) => {
 
                     <div className="sm:col-span-2">
                         <label className="block text-[12px] font-bold text-text-dark mb-1.5 ml-1">Tags</label>
-                        <div className="flex flex-wrap gap-1.5 items-center min-h-[44px] px-3 py-1.5 bg-background border border-border rounded-lg shadow-sm focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/10 transition-all">
+                        <div className="flex flex-wrap gap-1.5 items-center min-h-[44px] px-3 py-1.5 bg-background border border-border rounded-lg shadow-sm focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/10 transition">
                             {tags.map(t => (
                                 <span key={t} className={`flex items-center gap-1 px-2.5 py-0.5 border rounded-full text-[11.5px] font-bold ${getTagStyle(t)}`}>
                                     {t}
@@ -519,7 +519,7 @@ const BulkImportModal = ({ onClose, onImported }) => {
                                 </ul>
                             )}
                         </div>
-                        <button onClick={onClose} className="mt-4 w-full py-2.5 bg-primary text-white rounded-lg font-semibold text-[13.5px] hover:bg-primary/90 transition-colors cursor-pointer">
+                        <button onClick={onClose} className="mt-4 w-full py-2.5 bg-primary text-white rounded-lg font-semibold text-[13.5px] hover:bg-primary/90 transition active:scale-[0.98] cursor-pointer">
                             Done
                         </button>
                     </div>
@@ -530,7 +530,7 @@ const BulkImportModal = ({ onClose, onImported }) => {
                             <p>Include columns: <code className="bg-white/50 px-1 py-0.5 rounded text-blue-700">email</code>, <code className="bg-white/50 px-1 py-0.5 rounded text-blue-700">company</code>, <code className="bg-white/50 px-1 py-0.5 rounded text-blue-700">role</code> — optional: <code className="bg-white/50 px-1 py-0.5 rounded text-blue-700">hr_name</code>, <code className="bg-white/50 px-1 py-0.5 rounded text-blue-700">notes</code>, <code className="bg-white/50 px-1 py-0.5 rounded text-blue-700">tags</code></p>
                         </div>
 
-                        <label className="block mb-5 cursor-pointer border-2 border-dashed border-border rounded-xl p-8 text-center hover:border-primary/50 hover:bg-primary/5 transition-all group">
+                        <label className="block mb-5 cursor-pointer border-2 border-dashed border-border rounded-xl p-8 text-center hover:border-primary/50 hover:bg-primary/5 transition group">
                             <div className="w-12 h-12 rounded-full bg-surface group-hover:bg-white flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors">
                                 <FiUpload size={20} className="text-muted group-hover:text-primary transition-colors" />
                             </div>
@@ -794,7 +794,7 @@ const Leads = () => {
                                 setCurrentPage(1);
                             }}
                             placeholder="Search contacts..."
-                            className="w-full pl-9 pr-14 py-2 bg-background border border-border/60 rounded-lg text-[13px] font-medium placeholder:text-muted outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all shadow-sm"
+                            className="w-full pl-9 pr-14 py-2 bg-background border border-border/60 rounded-lg text-[13px] font-medium placeholder:text-muted outline-none focus:border-primary focus:ring-1 focus:ring-primary transition shadow-sm"
                         />
                         <div className="hidden sm:flex absolute right-2.5 top-1/2 -translate-y-1/2 items-center gap-0.5 pointer-events-none">
                             <kbd className="px-1.5 py-0.5 text-[10px] font-bold bg-surface border border-border rounded text-muted">Ctrl</kbd>
@@ -803,7 +803,7 @@ const Leads = () => {
                     </div>
                     <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-hide shrink-0">
                         {['Role', 'Location', 'Tags', 'Company'].map(filter => (
-                            <button key={filter} className="flex items-center gap-1.5 px-3 py-2 bg-background border border-border/60 rounded-lg text-[12.5px] font-semibold text-text-dark hover:bg-surface hover:border-border transition-all whitespace-nowrap shadow-sm cursor-pointer">
+                            <button key={filter} className="flex items-center gap-1.5 px-3 py-2 bg-background border border-border/60 rounded-lg text-[12.5px] font-semibold text-text-dark hover:bg-surface hover:border-border transition whitespace-nowrap shadow-sm cursor-pointer">
                                 {filter} <FiChevronDown size={13} className="text-muted" />
                             </button>
                         ))}
@@ -819,7 +819,7 @@ const Leads = () => {
                             <button
                                 key={option}
                                 onClick={() => setDateFilter(option)}
-                                className={`px-3 py-1.5 text-[12px] font-semibold rounded-md transition-all cursor-pointer ${dateFilter === option ? 'bg-background text-text-dark shadow-sm border border-border/50' : 'text-muted hover:text-text-dark hover:bg-black/5 border border-transparent'}`}
+                                className={`px-3 py-1.5 text-[12px] font-semibold rounded-md transition cursor-pointer ${dateFilter === option ? 'bg-background text-text-dark shadow-sm border border-border/50' : 'text-muted hover:text-text-dark hover:bg-black/5 border border-transparent'}`}
                             >
                                 {option}
                             </button>
@@ -832,7 +832,7 @@ const Leads = () => {
                             <button
                                 key={option}
                                 onClick={() => setStatusFilter(option)}
-                                className={`px-3 py-1.5 text-[12px] font-semibold rounded-md transition-all cursor-pointer ${statusFilter === option ? 'bg-background text-text-dark shadow-sm border border-border/50' : 'text-muted hover:text-text-dark hover:bg-black/5 border border-transparent'}`}
+                                className={`px-3 py-1.5 text-[12px] font-semibold rounded-md transition cursor-pointer ${statusFilter === option ? 'bg-background text-text-dark shadow-sm border border-border/50' : 'text-muted hover:text-text-dark hover:bg-black/5 border border-transparent'}`}
                             >
                                 {option}
                             </button>
@@ -862,7 +862,7 @@ const Leads = () => {
                             <button onClick={() => setShowBulk(true)} className="px-5 py-2.5 bg-background border border-border rounded-lg text-[13px] font-semibold text-text-dark hover:bg-surface transition-colors shadow-sm">
                                 Import CSV
                             </button>
-                            <button onClick={() => { setEditingLead(null); setShowForm(true); }} className="px-5 py-2.5 bg-primary text-white rounded-lg text-[13px] font-semibold hover:bg-primary/90 transition-colors shadow-sm">
+                            <button onClick={() => { setEditingLead(null); setShowForm(true); }} className="px-5 py-2.5 bg-primary text-white rounded-lg text-[13px] font-semibold hover:bg-primary/90 transition active:scale-[0.98] shadow-sm">
                                 Add Contact
                             </button>
                         </div>
@@ -927,7 +927,7 @@ const Leads = () => {
                                                 <div className="flex items-center justify-end gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
                                                     <button
                                                         onClick={(e) => { e.stopPropagation(); handleEdit(lead); }}
-                                                        className="p-1.5 text-muted hover:text-primary hover:bg-primary/5 border border-transparent hover:border-primary/20 rounded-md transition-all cursor-pointer"
+                                                        className="p-1.5 text-muted hover:text-primary hover:bg-primary/5 border border-transparent hover:border-primary/20 rounded-md transition cursor-pointer"
                                                         title="Edit"
                                                         aria-label={`Edit ${lead.email}`}
                                                     >
@@ -935,7 +935,7 @@ const Leads = () => {
                                                     </button>
                                                     <button
                                                         onClick={(e) => { e.stopPropagation(); handleDelete(lead._id); }}
-                                                        className="p-1.5 text-muted hover:text-red-600 hover:bg-red-50 border border-transparent hover:border-red-200 rounded-md transition-all cursor-pointer"
+                                                        className="p-1.5 text-muted hover:text-red-600 hover:bg-red-50 border border-transparent hover:border-red-200 rounded-md transition cursor-pointer"
                                                         title="Delete"
                                                         aria-label={`Delete ${lead.email}`}
                                                     >
@@ -943,7 +943,7 @@ const Leads = () => {
                                                     </button>
                                                     <button
                                                         onClick={(e) => { e.stopPropagation(); }}
-                                                        className="p-1.5 text-muted hover:text-text-dark hover:bg-surface border border-transparent hover:border-border rounded-md transition-all cursor-pointer"
+                                                        className="p-1.5 text-muted hover:text-text-dark hover:bg-surface border border-transparent hover:border-border rounded-md transition cursor-pointer"
                                                         title="More Options"
                                                         aria-label={`More options for ${lead.email}`}
                                                     >
@@ -967,7 +967,7 @@ const Leads = () => {
                                     <button
                                         onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                                         disabled={currentPage === 1}
-                                        className="px-3 py-1.5 text-[12.5px] font-semibold text-text-dark hover:bg-background border border-transparent hover:border-border rounded-md transition-all disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:border-transparent cursor-pointer"
+                                        className="px-3 py-1.5 text-[12.5px] font-semibold text-text-dark hover:bg-background border border-transparent hover:border-border rounded-md transition disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:border-transparent cursor-pointer"
                                     >
                                         Previous
                                     </button>
@@ -983,7 +983,7 @@ const Leads = () => {
                                                 <button
                                                     key={page}
                                                     onClick={() => setCurrentPage(page)}
-                                                    className={`w-7 h-7 flex items-center justify-center rounded-md text-[12.5px] font-bold transition-all cursor-pointer ${currentPage === page ? 'bg-primary text-white shadow-sm' : 'text-text-dark hover:bg-background border border-transparent hover:border-border'}`}
+                                                    className={`w-7 h-7 flex items-center justify-center rounded-md text-[12.5px] font-bold transition cursor-pointer ${currentPage === page ? 'bg-primary text-white shadow-sm' : 'text-text-dark hover:bg-background border border-transparent hover:border-border'}`}
                                                 >
                                                     {page}
                                                 </button>
@@ -994,7 +994,7 @@ const Leads = () => {
                                     <button
                                         onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                                         disabled={currentPage === totalPages}
-                                        className="px-3 py-1.5 text-[12.5px] font-semibold text-text-dark hover:bg-background border border-transparent hover:border-border rounded-md transition-all disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:border-transparent cursor-pointer"
+                                        className="px-3 py-1.5 text-[12.5px] font-semibold text-text-dark hover:bg-background border border-transparent hover:border-border rounded-md transition disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:border-transparent cursor-pointer"
                                     >
                                         Next
                                     </button>

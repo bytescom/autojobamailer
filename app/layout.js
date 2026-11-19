@@ -10,9 +10,9 @@ const manrope = Manrope({
 });
 
 export const metadata = {
-  title: "Desento - Full-Stack Outreach Platform",
-  description: "Create, send, track, and manage personalized outreach from a single workspace. The ultimate outreach platform for professionals.",
-  keywords: ["personalized outreach", "cold outreach tool", "email outreach", "sales prospecting", "outreach automation"],
+  title: "Autojobmailer - AI Job Application Tool & Email Generator",
+  description: "Automate job applications with Autojobmailer using our personalized AI job application email generator, smart follow-ups, and a built-in application tracker.",
+  keywords: ["automate job applications", "AI job application tool", "job application email generator", "job application tracker", "auto apply to jobs"],
 };
 
 export default function RootLayout({ children }) {

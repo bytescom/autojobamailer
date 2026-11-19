@@ -16,7 +16,7 @@ const AccordionRow = ({ app, onClick }) => {
     const [open, setOpen] = useState(false);
     const ss = statusStyles[app.status] || statusStyles["Sent"];
     return (
-        <div className={`border rounded-xl overflow-hidden transition-all ${open ? 'border-primary/30 shadow-sm' : 'border-border'}`}>
+        <div className={`border rounded-xl overflow-hidden transition ${open ? 'border-primary/30 shadow-sm' : 'border-border'}`}>
             <button
                 onClick={(e) => {
                     // Stop propagation so we don't open the accordion if clicking the main row designed to open the drawer

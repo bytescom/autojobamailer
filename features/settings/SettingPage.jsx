@@ -46,7 +46,7 @@ export default function Settings() {
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab)}
-                            className={`px-6 py-3.5 text-[13px] font-medium transition-all whitespace-nowrap sm:flex-1 text-center cursor-pointer ${activeTab === tab
+                            className={`px-6 py-3.5 text-[13px] font-medium transition whitespace-nowrap sm:flex-1 text-center cursor-pointer ${activeTab === tab
                                     ? 'bg-background text-text-dark border-t-[3px] border-t-primary shadow-[0_-1px_0_0_theme(colors.gray.100)]'
                                     : 'text-muted hover:text-primary hover:bg-surface border-t-[3px] border-t-transparent'
                                 }`}

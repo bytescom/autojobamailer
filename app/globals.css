@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 html {
   scroll-behavior: smooth;
@@ -23,6 +24,11 @@ html {
      div, breaking position:fixed (navbar) while the animation runs. */
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
 }
 
 .animate-page-transition {
@@ -63,6 +69,20 @@ html {
   background: transparent;
 }
 
+/* Touch devices and narrow viewports: scrollbars are overlay by mobile
+   convention. Hiding them stops the styled scrollbar from eating ~12px of
+   layout width on the right, which made every page's content sit visibly
+   off-centre (asymmetric insets). */
+@media (pointer: coarse), (max-width: 767px) {
+  * {
+    scrollbar-width: none;
+  }
+
+  *::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* Utility: hide scrollbar while keeping scrollability (side panels, chips) */
 .no-scrollbar {
   scrollbar-width: none;
@@ -71,4 +91,17 @@ html {
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* Respect users who prefer reduced motion: kill decorative animations but
+   keep opacity fades (they don't cause motion sickness). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

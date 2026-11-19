@@ -35,10 +35,10 @@ export default function TermsPage() {
 
             <header className="relative z-10 border-b border-border/60 bg-white/75 backdrop-blur-md">
                 <nav className="mx-auto flex h-17.5 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8" aria-label="Terms navigation">
-                    <Link href="/" className="flex items-center gap-2" aria-label="Desento home">
-                        <img src="/icon.svg" alt="Desento Logo" className="w-6 h-6" />
+                    <Link href="/" className="flex items-center gap-2" aria-label="Autojobmailer home">
+                        <img src="/icon.svg" alt="Autojobmailer Logo" className="w-6 h-6" />
                         <span className="text-xl font-black tracking-tight text-text-dark">
-                            Desento<span className="text-secondary">.</span>
+                            Autojobmailer<span className="text-secondary">.</span>
                         </span>
                     </Link>
                     <Link href="/" className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-text/60 transition-colors hover:text-primary">
@@ -72,7 +72,7 @@ export default function TermsPage() {
                                 <div className="rounded-lg border border-primary/10 bg-primary/5 p-3">
                                     <MdBolt className="h-4 w-4 text-secondary" />
                                 </div>
-                                <h2 className="text-xl font-black tracking-tight text-text-dark">How you may use Desento</h2>
+                                <h2 className="text-xl font-black tracking-tight text-text-dark">How you may use Autojobmailer</h2>
                             </div>
                             <p className="mt-4 text-sm leading-7 text-text/70">
                                 The product is intended to help you move faster in your job search. You agree to use it in a lawful, respectful, and rate-limited way.
@@ -163,10 +163,10 @@ export default function TermsPage() {
                             <h2 className="text-xl font-black tracking-tight text-text-dark">Disclaimer & Liability</h2>
                         </div>
                         <p className="mt-4 text-sm leading-7 text-text/70">
-                            Desento is a tool designed to help automate and streamline your job search process. <span className="font-semibold">We are not liable for the outcomes of your job applications.</span> Results depend on your profile, skills, qualifications, and job market conditions.
+                            Autojobmailer is a tool designed to help automate and streamline your job search process. <span className="font-semibold">We are not liable for the outcomes of your job applications.</span> Results depend on your profile, skills, qualifications, and job market conditions.
                         </p>
                         <p className="mt-4 text-sm leading-7 text-text/70">
-                            This tool is intended to increase productivity and efficiency in your job search workflow. Success ultimately depends on factors beyond our control, including employer decisions, market demand, and your individual qualifications. By using Desento, you acknowledge that we provide the technology to assist your efforts, but cannot guarantee employment results.
+                            This tool is intended to increase productivity and efficiency in your job search workflow. Success ultimately depends on factors beyond our control, including employer decisions, market demand, and your individual qualifications. By using Autojobmailer, you acknowledge that we provide the technology to assist your efforts, but cannot guarantee employment results.
                         </p>
                     </article>
                 </div>
@@ -175,7 +175,7 @@ export default function TermsPage() {
             <footer className="w-full bg-surface text-text-dark relative overflow-hidden px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm border-t border-border py-10">
                     <p className="text-text/70 font-medium">
-                        &copy; {currentYear} Desento by{" "}
+                        &copy; {currentYear} Autojobmailer by{" "}
                         <Link
                             href="https://x.com/justpankajk"
                             target="_blank"
@@ -192,7 +192,7 @@ export default function TermsPage() {
                                 key={social.name}
                                 href={social.href}
                                 target="_blank"
-                                className="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 hover:bg-primary hover:text-white text-text-dark transition-all duration-300 hover:scale-110"
+                                className="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 hover:bg-primary hover:text-white text-text-dark transition duration-300 hover:scale-110"
                                 aria-label={social.name}
                             >
                                 <social.icon className="w-4 h-4" />
