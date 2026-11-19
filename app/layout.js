@@ -1,4 +1,5 @@
 import { Manrope } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import AuthProvider from "@/lib/AuthProvider";
 import ReduxProvider from "@/components/providers/ReduxProvider";
 import { Toaster } from "react-hot-toast";
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <ReduxProvider>
             {children}
+            <Analytics />
             <Toaster
               position="top-right"
               toastOptions={{

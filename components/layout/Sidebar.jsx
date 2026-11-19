@@ -312,9 +312,14 @@ export default function Sidebar() {
                                     <Link
                                         href="/dashboard/settings"
                                         onClick={() => setProfileOpen(false)}
-                                        className="w-full flex items-center gap-3 px-4 py-3 text-[13px] font-semibold text-text hover:bg-surface hover:text-primary transition-colors"
+                                        className="w-full flex items-center justify-between px-4 py-3 text-[13px] font-semibold text-text hover:bg-surface hover:text-primary transition-colors"
                                     >
-                                        <FiUser size={15} className="text-muted" /> Profile & Settings
+                                        <span className="flex items-center gap-3">
+                                            <FiUser size={15} className="text-muted" /> Profile & Settings
+                                        </span>
+                                        <span className="text-[10.5px] font-bold text-muted bg-surface border border-border px-1.5 py-0.5 rounded">
+                                            v3.3.0
+                                        </span>
                                     </Link>
                                     <div className="mx-4 my-1 border-t border-border" />
                                     <button

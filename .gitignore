@@ -45,3 +45,5 @@ redux
 node_modules
 
 docs/
+
+.agent
